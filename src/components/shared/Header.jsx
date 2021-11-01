@@ -5,18 +5,12 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "state/AuthProvider";
 import fletnix from "assets/img/fletnix.png";
 
-import Identificator from "./Identificator";
-
 export default function Header() {
-  // Global state
-  const { user } = useAuth();
-
   return (
     <header>
       <NavLink to="/" className="home">
         <img src={fletnix} alt="Home" />
       </NavLink>
-      <nav></nav>
     </header>
   );
 }

@@ -13,13 +13,19 @@ export default function Teacher() {
   //Local states
   const [isOpen, setIsOpen] = useState(false);
 
-  return (
-    <main className="page-teacher">
-      <h1>Home Page</h1>
+  const bgURL =
+    "https://images.unsplash.com/photo-1635752782385-bc676ec52709?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=765&q=80";
 
-      <Modal type="create" isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        New course
-      </Modal>
-    </main>
+  return (
+    <>
+      <img src={bgURL} alt="bg" className="hero" />
+      <main className="page-home">
+        <Modal type="create" isOpen={isOpen} onClose={() => setIsOpen(false)}>
+          New course
+        </Modal>
+        <section className="content">AAA</section>
+        <div className="footer-background" />
+      </main>
+    </>
   );
 }

@@ -6,7 +6,7 @@ import { useAuth } from "state/AuthProvider";
 import Home from "components/Home";
 import Login from "components/AuthPages/Login";
 import SignUp from "components/AuthPages/Signup";
-import Header from "components/shared/Header";
+import HeaderMenu from "components/shared/HeaderMenu";
 import Course from "components/CoursePage/Course";
 import Playlist from "components/PlaylistPage/Playlist";
 import Profile from "components/ProfilePage/Profile";
@@ -17,8 +17,8 @@ export default function Logged() {
 
   return (
     <>
-      <Header />
-      {/*  <Toolbar /> */}
+      <HeaderMenu />
+
       <Route exact path="/" component={Home} />
       <Route component={Login} path="/login" />
       <Route component={SignUp} path="/signup" />
