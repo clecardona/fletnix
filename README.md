@@ -1,6 +1,6 @@
-# FootX
+# FLETNIX
 
-![img](https://cdn.dribbble.com/users/46743/screenshots/4406766/evertonmedical_header-dribbble.jpg?compress=1&resize=410x300)
+![img](https://scontent-arn2-1.xx.fbcdn.net/v/t1.18169-9/22308860_117189662461981_3463672015092833705_n.png?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=NvFhrQJl8qAAX_OI6YQ&_nc_ht=scontent-arn2-1.xx&oh=5c77c8235adad12cc514dbc6bc2e6c87&oe=61A68EA2)
 
 [![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)
@@ -11,14 +11,14 @@ This project was bootstrapped with Create React App.
 
 ## 1. Content
 
-This is a Learning platform website where you can learn new football skills.
+This is a carbon copy of Netflix, for educational purpose only.
 
-#### [Go to website](https://lms-football.web.app/)
+<!-- #### [Go to website](https://lms-football.web.app/)
 
 In order to access the teacher section here are credentials:
 
 - email : admina@admin.com
-- password : adminadmin
+- password : adminadmin -->
 
 ## 2. Setup
 
@@ -47,19 +47,3 @@ These are the instructions to run the project:
 ### 4.2 Project spreadsheet
 
 [Google Spreadsheets link](https://docs.google.com/spreadsheets/d/1rN3AfGJQrNwQckxY0lTpu61Qqt_aquz5lgfWji6Dq9w/edit#gid=894162645)
-
-### 4.3 Users flow chart
-
-[Whimsical Chart](https://whimsical.com/user-flow-FNvfz6xGvtWW7D4d3ECoKP)
-
-### 4.4 Design mockup
-
-[Figma mockup](https://www.figma.com/file/v38HuWhK5BSAjNsaMOTlyq/npa-clement-cardona-learning-platform)
-
-### 4.5 Component tree
-
-[Whimsical Component Tree](https://whimsical.com/component-tree-YK2EpozWkxanM1UQiiGZb)
-
-## 5. Credits
-
-@davidflanagan
