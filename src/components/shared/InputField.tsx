@@ -11,7 +11,6 @@ export default function InputField({ onChange, options, state }) {
     <>
       {key !== "avatarURL" && (
         <label className={key}>
-          {label} {required && "  ( required )"}
           <input
             ref={inputReference}
             value={state}
@@ -19,18 +18,8 @@ export default function InputField({ onChange, options, state }) {
             placeholder={mode === "edit" ? state : placeholder}
             required={required}
             onChange={() => onChange(key, inputReference.current.value)}
-          ></input>
-        </label>
-      )}
-      {key === "avatarURL" && (
-        <label className="files">
-          Avatar
-          <input
-            type="file"
-            onChange={(e) => {
-              onChange(key, e.target.files[0]);
-            }}
           />
+          <p className="error">Enter valid stuff </p>
         </label>
       )}
     </>

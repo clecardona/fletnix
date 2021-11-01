@@ -2,6 +2,7 @@
 //NPM Packages
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import fletnixBg from "assets/img/fletnixBg.jpeg";
 
 //Local imports
 import fields from "./assets/fields-login.json";
@@ -46,43 +47,54 @@ export default function Login() {
   }
   //Components
   const Fields = fields.map((item) => (
-    <InputField
-      key={item.key}
-      options={item}
-      state={form[item.key]}
-      onChange={onChange}
-    />
+    <>
+      <InputField
+        key={item.key}
+        options={item}
+        state={form[item.key]}
+        onChange={onChange}
+      />
+    </>
   ));
 
   return (
-    <main className="page-login">
-      <form onSubmit={onSubmit}>
-        {Fields}
-        <p>{message}</p>
-        <label className="remember">
-          <input
-            type="checkbox"
-            checked={remember}
-            onChange={() => setRemember(!remember)}
-          />
-          <h4>Remember me</h4>
-        </label>
-        <button className="btn btn-main">
-          <h4>Login</h4>
-        </button>
-      </form>
-      <p className="optional-action">
-        Not registered ?
-        <Link to="/signup">
-          <strong> Create an account</strong>
-        </Link>
-      </p>
-      <p className="optional-action">
-        Forgot password ? :
-        <Link to="/recover">
-          <strong> Recover </strong>{" "}
-        </Link>
-      </p>
-    </main>
+    <>
+      <main className="page-login">
+        <img src={fletnixBg} alt="bg" className="bg" />
+        <div className="logo">Fletnix</div>
+
+        <div className="bloc">
+          <form onSubmit={onSubmit}>
+            <h1 className="title">Sign In</h1>
+            {Fields}
+            <p>{message}</p>
+
+            <div className="remember-recover">
+              <label className="remember">
+                <input
+                  type="checkbox"
+                  checked={remember}
+                  onChange={() => setRemember(!remember)}
+                />
+                <p>Remember me</p>
+              </label>
+              <Link to="/recover" className="help">
+                Need help?
+              </Link>
+            </div>
+
+            <button className="btn-signin">Sign In</button>
+          </form>
+
+          <p className="optional-action">
+            New to Fletnix ?&nbsp;
+            <Link to="/signup">
+              <strong>Sign up now.</strong>
+            </Link>
+          </p>
+        </div>
+        <div className="footer-background" />
+      </main>
+    </>
   );
 }

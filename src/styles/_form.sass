@@ -1,38 +1,20 @@
+input
+    border: none
+    background: $grayNetflixInput
+    color: $white
+
+    &::placeholder
+        color: $grayPlaceholder
+
+input[type=text],input[type=email],input[type=password]
+    min-height: 48px
+    padding: 0 18px
+    border-radius: 4px
+
 form
-    max-width: 800px
+
     margin: 0 auto
-    display: grid
-    gap: .3em
-    grid-auto-flow: row
-    grid-auto-rows: min-content
 
-    h3,h4,p
-        color: $white
-
-    input
-        height: 44px
-        //max-width: 320px
     label
-        display: grid
-        grid-auto-flow: row
-        align-items: center
-
-        input
-            width: 100%
-            padding-left: 12px
-            margin-top: .2em
-
-    .description
-        input
-            justify-self: center
-
-            height: 60px
-    .content
-        input
-            justify-self: center
-
-            height: 100px
 
     button
-        width: 140px
-        justify-self: center

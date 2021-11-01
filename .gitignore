@@ -95,3 +95,7 @@ yarn-error.log*
 # api keys
 security
 .env
+
+#resources
+resources
+/resources

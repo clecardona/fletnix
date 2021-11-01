@@ -61,20 +61,23 @@ export default function Signup() {
   ));
 
   return (
-    <main className="page-login signup ">
-      <form onSubmit={onSubmit}>
-        {Fields}
-        <p>{message}</p>
-        <button className="btn btn-main">
-          <h4>signup</h4>
-        </button>
-      </form>
-      <p className="optional-action">
-        Already have an acoount? :
-        <Link to="/login">
-          <strong> Login </strong>
-        </Link>
-      </p>
-    </main>
+    <>
+      <Link to="/" className="signin">
+        <strong>Sign In</strong>
+      </Link>
+
+      <main className="page-signup ">
+        <div className="bloc">
+          <form onSubmit={onSubmit}>
+            <h1 className="title">Sign Up</h1>
+            <h2>Just a few more steps and you're finished!</h2>
+            {Fields}
+            <p>{message}</p>
+            <button className="btn btn-signup">Sign Up</button>
+          </form>
+        </div>
+        <div className="footer-background" />
+      </main>
+    </>
   );
 }

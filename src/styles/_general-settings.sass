@@ -1,7 +1,6 @@
 
 *
   box-sizing: border-box
-
   scroll-behavior: smooth
   -ms-overflow-style: none
   font-smooth: auto
@@ -18,11 +17,11 @@
 .App
   display: flex
   flex-direction: column
-  background: $yellow
 
 main
-  position: relative
-  min-height: calc(100vh - 160px)
+  //position: relative
+  margin-top: $header-height
+  min-height: calc(100vh - $footer-height - $header-height )
 
 ul,
 li,
@@ -56,24 +55,6 @@ td
 .img-1em
   width: 1em
   height: auto
-
-.form
-  .verif
-    color: $redDark
-    font-weight: 300
-    font-size: 14px
-    text-align: left
-
-input
-  border: none
-
-input[type=text],input[type=email],input[type=password]
-  padding: 0 18px
-  background: $white
-  color: $gray2
-  border-radius: 8px
-input[type=file]
-  color: $white
 
 section
   padding: 1em 0

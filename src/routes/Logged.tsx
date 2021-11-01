@@ -3,8 +3,7 @@ import { Route } from "react-router-dom";
 
 // Project files
 import { useAuth } from "state/AuthProvider";
-import Teacher from "components/UserPage/Teacher";
-import Student from "components/UserPage/Student";
+import Home from "components/Home";
 import Login from "components/AuthPages/Login";
 import SignUp from "components/AuthPages/Signup";
 import Header from "components/shared/Header";
@@ -15,12 +14,12 @@ import Toolbar from "components/shared/Toolbar";
 
 export default function Logged() {
   const { user } = useAuth();
-  const isTeacher = user.role === "teacher";
+
   return (
     <>
       <Header />
-      <Toolbar />
-      <Route exact path="/" component={isTeacher ? Teacher : Student} />
+      {/*  <Toolbar /> */}
+      <Route exact path="/" component={Home} />
       <Route component={Login} path="/login" />
       <Route component={SignUp} path="/signup" />
       <Route component={Course} path="/courses/:courseID" />

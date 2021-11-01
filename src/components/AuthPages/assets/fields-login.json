@@ -2,13 +2,13 @@
   {
     "key": "email",
     "label": "Email",
-    "placeholder": "youremail@provider.com",
+    "placeholder": "Email",
     "type": "email"
   },
   {
     "key": "password",
     "label": "Password",
-    "placeholder": "*********",
+    "placeholder": "Password",
     "type": "password"
   }
 ]
