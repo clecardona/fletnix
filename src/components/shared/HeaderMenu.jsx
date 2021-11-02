@@ -1,16 +1,18 @@
 //NPM Packages
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 //Local files
 import { useAuth } from "state/AuthProvider";
 import fletnix from "assets/img/fletnix.png";
 import loupe from "assets/img/loupe.png";
-
-import Identificator from "./Identificator";
+import face from "assets/icns/face.png";
+import droparrow from "assets/icns/droparrow.svg";
 
 export default function Header() {
   // Global state
   const { loggedIn, setLoggedIn, setUser } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="header-menu">
@@ -35,18 +37,28 @@ export default function Header() {
         </nav>
       </div>
       <div className="actions">
-        <div className="searchbar">
-          {" "}
-          <img src={loupe} alt="" /> Search
+        <div className={isOpen ? "searchbar-open" : "searchbar"}>
+          <button onClick={() => setIsOpen(!isOpen)}>
+            <img src={loupe} alt="" />
+          </button>
+          {isOpen && <input type="text" placeholder="Titles" />}
         </div>
-        <button
-          className="btn-orange"
-          onClick={() => {
-            setLoggedIn(false);
-          }}
-        >
-          Logout
-        </button>
+
+        <div className="dropdown">
+          <img src={face} alt="" />
+          <img className="drop-arrow" src={droparrow} alt="" />
+
+          <div className="caret">
+            <img src={droparrow} alt="" />
+            <button
+              onClick={() => {
+                setLoggedIn(false);
+              }}
+            >
+              Sign out of Fletnix
+            </button>
+          </div>
+        </div>
       </div>
     </header>
   );
