@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 //Local files
 import { useAuth } from "state/AuthProvider";
 import fletnix from "assets/img/fletnix.png";
+import loupe from "assets/img/loupe.png";
 
 import Identificator from "./Identificator";
 
@@ -19,22 +20,25 @@ export default function Header() {
         </NavLink>
 
         <nav>
-          <NavLink to="/" className="home">
+          <NavLink to="/" className="nav-item">
             Home
-          </NavLink>{" "}
-          <NavLink to="/series" className="home">
+          </NavLink>
+          <NavLink to="/series" className="nav-item">
             Series
           </NavLink>{" "}
-          <NavLink to="/films" className="home">
+          <NavLink to="/films" className="nav-item">
             Films
           </NavLink>
-          <NavLink to="/documentaries" className="home">
+          <NavLink to="/documentaries" className="nav-item">
             Documentaries
           </NavLink>
         </nav>
       </div>
       <div className="actions">
-        <div className="searchbar">Search</div>{" "}
+        <div className="searchbar">
+          {" "}
+          <img src={loupe} alt="" /> Search
+        </div>
         <button
           className="btn-orange"
           onClick={() => {
