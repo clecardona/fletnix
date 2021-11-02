@@ -1,5 +1,5 @@
 //NPM Packages
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 //Local files
@@ -13,9 +13,24 @@ export default function Header() {
   // Global state
   const { loggedIn, setLoggedIn, setUser } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <header className="header-menu">
+    <header
+      className={scrollPosition === 0 ? "header-menu" : "header-menu black"}
+    >
       <div className="bloc">
         <NavLink to="/" className="home">
           <img src={fletnix} alt="Home" />

@@ -1,6 +1,6 @@
 //@ts-nocheck
 //NPM PAckages
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 //Local imports
 import { useAuth } from "state/AuthProvider";
@@ -36,7 +36,7 @@ export default function Teacher() {
           New course
         </Modal>
         <section className="bloc-title">
-          <h1>The Office</h1>
+          <h1>The Office </h1>
           <h2>
             A mockumentary on a group of typical office workers, where the
             workday consists of ego clashes, inappropriate behavior, and tedium.

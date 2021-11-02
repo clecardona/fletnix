@@ -69,25 +69,6 @@ button
     .icon-btn
       filter: invert(1)
 
-.pill
-  height: 25px
-  cursor: default
-  border: 1px solid $gray4
-  border-radius: 8px
-
-  h3
-    font-size: 14px
-    margin-left: 3px
-    color: $gray4
-    padding: 0 12px
-
-.btn-circle
-  height: 44px
-  width: 44px
-  border-radius: 44px
-  background: $red
-  color: $white
-
 .btn-300
   width: 300px
 
@@ -183,3 +164,21 @@ button
   &:hover
     background: rgba(109,109,110,0.4)
     transition: .3s ease
+
+.btn-season
+  display: flex
+  -webkit-box-align: center
+  align-items: center
+  min-width: 4em
+
+  position: relative
+  font-size: 1.5em
+  background-color: rgb(36, 36, 36)
+  padding: 0.5em 1em
+
+  color: white
+  cursor: pointer
+  border: 0.1em solid rgb(77, 77, 77)
+  border-radius: 0.2em
+  img
+    margin-left: .6em
