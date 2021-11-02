@@ -4,7 +4,7 @@ import { useState } from "react";
 
 //Local imports
 import { useAuth } from "state/AuthProvider";
-import Modal from "components/shared/Modal";
+import Modal from "components/Modal";
 import Thumbs from "./Thumbs";
 import Thumbs10 from "./Thumbs10";
 import play from "assets/icns/play.png";
@@ -15,7 +15,8 @@ export default function Teacher() {
   const { user } = useAuth();
 
   //Local states
-  const [isOpen, setIsOpen] = useState(false);
+  //const [isSearchbarOpen, setIsSearchBarOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const bgURL =
     "https://assets.upflix.pl/media/n/1619/2021/1uoksv2f1ocizt8xewywz27nqsr__1200_1600_r.jpg";
@@ -27,7 +28,11 @@ export default function Teacher() {
       </div>
 
       <main className="page-home">
-        <Modal type="create" isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <Modal
+          type="create"
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        >
           New course
         </Modal>
         <section className="bloc-title">
@@ -37,7 +42,7 @@ export default function Teacher() {
             workday consists of ego clashes, inappropriate behavior, and tedium.
           </h2>
           <div className="buttons">
-            <button className="btn-play">
+            <button className="btn-play" onClick={() => setIsModalOpen(true)}>
               <img src={play} alt="" /> Play
             </button>
             <button className="btn-more-info">
