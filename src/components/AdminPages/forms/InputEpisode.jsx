@@ -1,5 +1,12 @@
+//NPM Packages
+import { useState } from "react";
+
+//Local Files
 import remove from "assets/icns/remove.png";
-export default function InputSerie({ state, setForm }) {
+
+export default function InputEpisode({ state, setForm }) {
+  const [season, setSeason] = useState(1);
+  const [episodes, setEpisodes] = useState([]);
   //methods
   function onChangeLink(value, index) {
     // const newSeason = [...state.links];
@@ -19,32 +26,49 @@ export default function InputSerie({ state, setForm }) {
     setForm({ ...state, seasons: newSeason });
   }
 
-  console.log(state.seasons);
   //Component
-  const Seasons = state.seasons.map((item, index) => (
-    <div className="links-item" key={index}>
-      <p>Season {index + 1}</p>
-      {state.seasons.length > 1 && (
-        <button
-          className="btn btn-clear-field"
-          onClick={() => clearField(index)}
-          type="button"
-        >
-          <img src={remove} alt="-" />
-        </button>
-      )}
-    </div>
+
+  const Options = state.seasons.map((item, index) => (
+    <option key={index} value={index}>
+      Season {index + 1}
+    </option>
+  ));
+
+  console.log(episodes);
+  const Episodes = episodes.map((item, index) => (
+    <li key={index}>
+      <button
+        className="btn btn-orange"
+        type="button"
+        //onClick={() => handleClick(item)}
+      >
+        Select
+      </button>
+      <p>Episode {index + 1}</p>
+    </li>
   ));
 
   return (
     <div className="seasons">
-      <h4>Seasons : </h4>
+      <label className="selector">
+        Select a season : {season}
+        <select
+          onChange={(e) => {
+            setSeason(e.target.value);
+            setEpisodes(state.seasons[e.target.value].episodes);
+          }}
+        >
+          {Options}
+        </select>
+      </label>
+      {season !== "" && state.seasons[season].episodes && <ul>{Episodes}</ul>}
+      {/*  <h4>Seasons : </h4>
       {Seasons}
       {state.seasons.length < 20 && (
         <button className="btn btn-add-field" onClick={addLink} type="button">
           <h4> Add a season </h4>
         </button>
-      )}
+      )} */}
     </div>
   );
 }

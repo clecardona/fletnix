@@ -5,9 +5,9 @@ import { useHistory } from "react-router-dom";
 //Local imports
 import fields from "./assets/fields-edit.json";
 import InputField from "components/shared/InputField";
-import InputSerie from "./forms/InputSerie";
 import { updateDocument } from "scripts/fireStore";
 import { getCategory } from "scripts/methods";
+import InputEpisode from "./forms/InputEpisode";
 
 export default function EditForm({ data }) {
   //Local states
@@ -41,7 +41,6 @@ export default function EditForm({ data }) {
   }
   //Components
 
-  console.log(items);
   const Items = items.map((item, index) => (
     <li key={index} className="list-item">
       <button
@@ -84,11 +83,15 @@ export default function EditForm({ data }) {
 
       {showForm && (
         <>
+          <h2>General informations : </h2>
           <div className="main-bloc">{Fields}</div>
           <p>{errorMessage}</p>
           <button className="btn btn-submit btn-orange">
             <h4>Submit</h4>
           </button>{" "}
+          {form.category !== "film" && (
+            <InputEpisode state={form} setForm={setForm} />
+          )}
         </>
       )}
       {/* */}
