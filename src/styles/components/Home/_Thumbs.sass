@@ -11,8 +11,7 @@
         font-size: 1.4vw
         line-height: 1.25vw
 
-    ul
-
+    .track
         display: flex
         flex-direction: row
 
@@ -24,10 +23,25 @@
         &::-webkit-scrollbar
             display: none
 
-        li
+        .track-item
             width: 240px
             margin-right: 3px
-            img
+            overflow: hidden
+            border-radius: 4px
+            &:hover
+                position: absolute
+                transition: ease .3s
+                transition-delay: .2s
+                transform: scale(1.1)
                 border-radius: 4px
-                width: 240px
-                object-fit: center
+                box-shadow: 2px 2px 8px rgba(0,0 ,0 ,.2 )
+
+            button
+                margin: 0
+                padding: 0
+
+                img
+                    height: 170px
+                    width: 240px
+                    object-fit: cover
+                    border-radius: 4px

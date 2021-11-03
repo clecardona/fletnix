@@ -16,8 +16,6 @@ export default function Signup() {
   const [message, setMessage] = useState("");
   const history = useHistory();
   const { setLoggedIn, setUser } = useAuth();
-  const AVATAR_URL =
-    "https://cdn.dribbble.com/users/1066406/screenshots/6453079/bbb_-_firmino.jpg?compress=1&resize=400x300";
 
   // Methods
   function onChange(key, value) {
@@ -34,11 +32,8 @@ export default function Signup() {
 
   async function onSuccess(uid) {
     const newUser = {
-      firstname: form.firstname,
-      lastname: form.lastname,
       username: form.username,
-      role: "student",
-      avatarURL: AVATAR_URL,
+      role: "client",
     };
     await createDocumentWithId("users", uid, newUser);
     setLoggedIn(true);

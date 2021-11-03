@@ -13,7 +13,6 @@ export default function Modal({ isOpen, onClose, element }) {
   const [season, setSeason] = useState(1);
 
   const mockMatch = Math.floor(Math.random() * (100 - 80) + 80);
-  //console.log(element.seasons);
 
   if (!isOpen) return null;
   return reactDom.createPortal(

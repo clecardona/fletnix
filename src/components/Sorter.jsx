@@ -22,7 +22,10 @@ export default function Sorter({ data, hook }) {
   return (
     <section className="sorter">
       <h3>Episodes</h3>
-      <button className="btn-season" onClick={() => setIsOpen(!isOpen)}>
+      <button
+        className={isOpen ? "btn-season open" : "btn-season"}
+        onClick={() => setIsOpen(!isOpen)}
+      >
         Season {season} <img src={droparrow} alt="" />
       </button>
       {isOpen && <ul className="caret">{ListItems}</ul>}

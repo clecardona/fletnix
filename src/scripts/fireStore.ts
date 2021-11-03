@@ -41,7 +41,6 @@ export async function createDocumentWithId(
 ) {
   const documentReference = doc(firestoreInstance, path, id);
   await setDoc(documentReference, data);
-
   return id;
 }
 

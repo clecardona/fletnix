@@ -5,8 +5,6 @@ export default function Episodes({ data, season }) {
     "https://assets.upflix.pl/media/n/1619/2021/1uoksv2f1ocizt8xewywz27nqsr__1200_1600_r.jpg";
 
   const episodes = data[season - 1].episodes;
-  console.log(episodes);
-  //console.log(season, typeof season);
 
   const Episodes = episodes.map((item, index) => (
     <article key={index} className={item === 3 ? "active" : ""}>

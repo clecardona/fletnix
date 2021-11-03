@@ -9,9 +9,9 @@ import loupe from "assets/img/loupe.png";
 import face from "assets/icns/face.png";
 import droparrow from "assets/icns/droparrow.svg";
 
-export default function Header() {
+export default function HeaderMenu() {
   // Global state
-  const { loggedIn, setLoggedIn, setUser } = useAuth();
+  const { user, setLoggedIn } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
@@ -65,6 +65,7 @@ export default function Header() {
 
           <div className="caret">
             <img src={droparrow} alt="" />
+            <p>{user.username}</p>
             <button
               onClick={() => {
                 setLoggedIn(false);

@@ -14,7 +14,7 @@ export default function Thumbs10() {
   return (
     <section className="home-thumbs home-thumbs-10">
       <h2 className="title"> Top 10 in Sweden Today</h2>
-      <ul>{Thumbnails}</ul>
+      <ul className="track">{Thumbnails}</ul>
     </section>
   );
 }

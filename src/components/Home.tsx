@@ -13,6 +13,7 @@ import info from "assets/icns/info.png";
 import { useTitles } from "state/TitlesProvider";
 import Spinner from "components/shared/Spinner";
 import BoxError from "components/shared/BoxError";
+import { getCategory } from "scripts/methods";
 
 export default function Teacher() {
   // Global state
@@ -23,8 +24,12 @@ export default function Teacher() {
   const oss = titles.data[0];
   const valide = titles.data[1];
   //console.log(titles.data[1]);
+  //console.log(titles.data);
   //Local states
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const series = getCategory(titles.data, "serie");
+  const films = getCategory(titles.data, "film");
+  const documentaries = getCategory(titles.data, "documentary");
 
   const bgURL =
     "https://assets.upflix.pl/media/n/1619/2021/1uoksv2f1ocizt8xewywz27nqsr__1200_1600_r.jpg";
@@ -73,9 +78,15 @@ export default function Teacher() {
             </section>
             <section className="hero"></section>
 
-            <Thumbs>Series</Thumbs>
-            <Thumbs>Films</Thumbs>
-            <Thumbs>Documentaries</Thumbs>
+            <Thumbs data={series} category="serie">
+              Series
+            </Thumbs>
+            <Thumbs data={films} category="film">
+              Films
+            </Thumbs>
+            <Thumbs data={documentaries} category="serie">
+              Documentaries
+            </Thumbs>
             <Thumbs10 />
             {/* <div className="footer-background" /> */}
           </main>
