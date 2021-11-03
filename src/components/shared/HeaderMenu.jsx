@@ -1,6 +1,6 @@
 //NPM Packages
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 //Local files
 import { useAuth } from "state/AuthProvider";
@@ -14,6 +14,7 @@ export default function HeaderMenu() {
   const { user, setLoggedIn } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const history = useHistory();
   const handleScroll = () => {
     const position = window.pageYOffset;
     setScrollPosition(position);
@@ -69,6 +70,7 @@ export default function HeaderMenu() {
             <button
               onClick={() => {
                 setLoggedIn(false);
+                history.push("/");
               }}
             >
               Sign out of Fletnix

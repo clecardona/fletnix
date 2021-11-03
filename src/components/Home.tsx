@@ -35,6 +35,7 @@ export default function Teacher() {
 
   const bgURL =
     "https://assets.upflix.pl/media/n/1619/2021/1uoksv2f1ocizt8xewywz27nqsr__1200_1600_r.jpg";
+
   return (
     <>
       {titles.loading === true && <Spinner />}
@@ -44,7 +45,7 @@ export default function Teacher() {
         <>
           <div className="hero-bg">
             {/* <img src={bgURL} alt="bg" /> */}
-            <Player initialVideo="gO8N3L_aERg" />
+            <Player video={mockVideoURL} />
 
             <div className="gradient" />
           </div>

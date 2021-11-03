@@ -1,5 +1,5 @@
 .episodes
-    article
+    .episode
         cursor: pointer
         @include flex-full-centered
         border-top: 1px solid
@@ -9,6 +9,8 @@
 
         padding: 16px
         color: $white
+
+        width: 100%
 
         display: grid
         align-items: center
@@ -42,6 +44,8 @@
             padding: 16px
         .description
             grid-area: description
+            justify-self: flex-start
+            text-align: left
             padding: 16px
 
         &:hover
