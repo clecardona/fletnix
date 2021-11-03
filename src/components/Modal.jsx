@@ -5,14 +5,16 @@ import { useState } from "react";
 //Local Files
 import cross from "assets/icns/cross.png";
 import play from "assets/icns/play.png";
-import droparrow from "assets/icns/droparrow.svg";
 import Episodes from "./Episodes";
+import Sorter from "./Sorter";
+import Lister from "./Lister";
 
-export default function Modal({ isOpen, onClose, data, children, type }) {
+export default function Modal({ isOpen, onClose, element }) {
   const [season, setSeason] = useState(1);
 
-  const mockURL =
-    "https://assets.upflix.pl/media/n/1619/2021/1uoksv2f1ocizt8xewywz27nqsr__1200_1600_r.jpg";
+  const mockMatch = Math.floor(Math.random() * (100 - 80) + 80);
+  //console.log(element.seasons);
+
   if (!isOpen) return null;
   return reactDom.createPortal(
     <>
@@ -24,11 +26,11 @@ export default function Modal({ isOpen, onClose, data, children, type }) {
         </button>
 
         <div className="illustration">
-          <img src={mockURL} alt="" />
+          <img src={element.image_url} alt="" />
           <div className="gradient" />
 
           <div className="bloc">
-            <h1>The Office</h1>
+            <h1>{element.title}</h1>
             <div className="buttons">
               <button className="btn-play">
                 <img src={play} alt="" /> Play
@@ -39,33 +41,23 @@ export default function Modal({ isOpen, onClose, data, children, type }) {
 
         <div className="container">
           <section className="meta">
-            <div className="details">98% Match 2017 16+ 4 seasons</div>
+            <div className="details">
+              {mockMatch}% Match {element.year} {element.advised_public}{" "}
+              {element.duration}
+            </div>
 
-            <p className="description">
-              A mockumentary on a group of typical office workers, where the
-              workday consists of ego clashes, inappropriate behavior, and
-              tedium.
-            </p>
-
-            <p className="cast">
-              <em>Cast:</em> Actor 1, Actor 2 ,...
-            </p>
-            <p className="genres">
-              <em>Genres:</em> Genre 1, Genre 2 ,...
-            </p>
-            <p className="tags">
-              <em>This programme is:</em> tag 1, tag 2 ,...
-            </p>
+            <p className="description">{element.description}</p>
+            <Lister data={element.cast}>cast</Lister>
+            <Lister data={element.genres}>genres</Lister>
+            <Lister data={element.tags}>tags</Lister>
           </section>
 
-          <section className="sorter">
-            <h3>Episodes</h3>
-            <button className="btn-season">
-              Season 3 <img src={droparrow} alt="" />
-            </button>
-          </section>
-
-          <Episodes />
+          {element.seasons && (
+            <>
+              <Sorter data={element.seasons} hook={[season, setSeason]} />
+              <Episodes data={element.seasons} season={season} />
+            </>
+          )}
         </div>
       </div>
     </>,

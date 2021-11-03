@@ -4,61 +4,83 @@ import { useState, useEffect } from "react";
 
 //Local imports
 import { useAuth } from "state/AuthProvider";
+import useFetch from "hooks/useFetch";
 import Modal from "components/Modal";
 import Thumbs from "./Thumbs";
 import Thumbs10 from "./Thumbs10";
 import play from "assets/icns/play.png";
 import info from "assets/icns/info.png";
+import { useTitles } from "state/TitlesProvider";
+import Spinner from "components/shared/Spinner";
+import BoxError from "components/shared/BoxError";
 
 export default function Teacher() {
   // Global state
   const { user } = useAuth();
+  const { dispatchTitles } = useTitles();
+  const titles = useFetch("titles", dispatchTitles);
 
+  const oss = titles.data[0];
+  const valide = titles.data[1];
+  //console.log(titles.data[1]);
   //Local states
-  //const [isSearchbarOpen, setIsSearchBarOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const bgURL =
     "https://assets.upflix.pl/media/n/1619/2021/1uoksv2f1ocizt8xewywz27nqsr__1200_1600_r.jpg";
   return (
     <>
-      <div className="hero-bg">
-        <img src={bgURL} alt="bg" />
-        <div className="gradient" />
-      </div>
+      {titles.loading === true && <Spinner />}
+      {titles.error !== null && <BoxError />}
 
-      <main className="page-home">
-        <Modal
-          type="create"
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-        >
-          New course
-        </Modal>
-        <section className="bloc-title">
-          <h1>The Office </h1>
-          <h2>
-            A mockumentary on a group of typical office workers, where the
-            workday consists of ego clashes, inappropriate behavior, and tedium.
-          </h2>
-          <div className="buttons">
-            <button className="btn-play" onClick={() => setIsModalOpen(true)}>
-              <img src={play} alt="" /> Play
-            </button>
-            <button className="btn-more-info">
-              <img src={info} alt="" />
-              More Info
-            </button>
+      {(!titles.loading && titles.error) === null && (
+        <>
+          {" "}
+          <div className="hero-bg">
+            <img src={bgURL} alt="bg" />
+            <div className="gradient" />
           </div>
-        </section>
-        <section className="hero"></section>
+          <main className="page-home">
+            <Modal
+              element={valide}
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+            >
+              New course
+            </Modal>
+            <section className="bloc-title">
+              <h1>The Office </h1>
+              <h2>
+                A mockumentary on a group of typical office workers, where the
+                workday consists of ego clashes, inappropriate behavior, and
+                tedium.
+              </h2>
+              <div className="buttons">
+                <button
+                  className="btn-play"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  <img src={play} alt="" /> Play
+                </button>
+                <button
+                  className="btn-more-info"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  <img src={info} alt="" />
+                  More Info
+                </button>
+              </div>
+            </section>
+            <section className="hero"></section>
 
-        <Thumbs>Series</Thumbs>
-        <Thumbs>Films</Thumbs>
-        <Thumbs>Documentaries</Thumbs>
-        <Thumbs10 />
-        {/* <div className="footer-background" /> */}
-      </main>
+            <Thumbs>Series</Thumbs>
+            <Thumbs>Films</Thumbs>
+            <Thumbs>Documentaries</Thumbs>
+            <Thumbs10 />
+            {/* <div className="footer-background" /> */}
+          </main>
+        </>
+      )}
     </>
   );
 }

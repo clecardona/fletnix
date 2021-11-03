@@ -3,17 +3,16 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { AuthProvider } from "state/AuthProvider";
-import { CoursesProvider } from "state/CoursesProvider";
-import { UsersProvider } from "state/UsersProvider";
+import { TitlesProvider } from "state/TitlesProvider";
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <CoursesProvider>
-        <UsersProvider>
+      <TitlesProvider>
+        <TitlesProvider>
           <App />
-        </UsersProvider>
-      </CoursesProvider>
+        </TitlesProvider>
+      </TitlesProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById("root")

@@ -1,29 +1,39 @@
 .episodes
     article
+        cursor: pointer
         @include flex-full-centered
         border-top: 1px solid
         border-bottom: 1px solid
         border-color: $gray4
-        min-height: 130px
+        height: 150px
 
         padding: 16px
         color: $white
 
         display: grid
+        align-items: center
 
         grid-template-columns: 50px min-content 1fr
-        grid-template-rows: min-content 1fr
+        grid-template-rows: 50px 1fr
         grid-template-areas: "number illustration title" "number illustration description"
 
         h1
             grid-area: number
             justify-self: center
-        img
+        .thumb
             grid-area: illustration
-            overflow: hidden
-            height: 93px
-            width: 166px
-            object-fit: cover
+            display: flex
+            flex-direction: column
+            background: $gray4
+            img
+                overflow: hidden
+                height: 93px
+                width: 166px
+                object-fit: cover
+            .bar
+                height: 4px
+                width: 100%
+                background: $red
         .title
             grid-area: title
             display: flex
@@ -33,6 +43,7 @@
         .description
             grid-area: description
             padding: 16px
-    .active
-        background: rgba(255,255,255,.1)
-        border-radius: 4px
+
+        &:hover
+            background: rgba(255,255,255,.1)
+            border-radius: 4px

@@ -1,22 +1,22 @@
 //@ts-nocheck
-export default function coursesReducer(state, action) {
+export default function titlesReducer(state, action) {
   switch (action.type) {
-    case "CREATE_COURSE":
-      return createCourse(state, action);
-    case "UPDATE_COURSE":
-      return updateCourse(state, action);
+    case "CREATE_TITLE":
+      return createTitle(state, action);
+    case "UPDATE_TITLE":
+      return updateTitle(state, action);
     case "SET_DATA":
-      return setCourses(action);
+      return setTitles(action);
     default:
       throw new Error(`No action type found ${action.type}`);
   }
 }
-function createCourse(state, action) {
+function createTitle(state, action) {
   const { payload } = action;
   return [...state, payload];
 }
 
-function updateCourse(state, action) {
+function updateTitle(state, action) {
   const { payload } = action;
   const newState = [...state];
   const index = newState.findIndex((item) => item.id === payload.id);
@@ -25,7 +25,7 @@ function updateCourse(state, action) {
   return newState;
 }
 
-function setCourses(action) {
+function setTitles(action) {
   const { payload } = action;
   return payload;
 }
