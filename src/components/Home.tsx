@@ -14,12 +14,14 @@ import { useTitles } from "state/TitlesProvider";
 import Spinner from "components/shared/Spinner";
 import BoxError from "components/shared/BoxError";
 import { getCategory } from "scripts/methods";
+import Player from "components/Player";
 
 export default function Teacher() {
   // Global state
   const { user } = useAuth();
   const { dispatchTitles } = useTitles();
   const titles = useFetch("titles", dispatchTitles);
+  const mockVideoURL = "https://www.youtube.com/watch?v=gO8N3L_aERg";
 
   const oss = titles.data[0];
   const valide = titles.data[1];
@@ -40,9 +42,10 @@ export default function Teacher() {
 
       {(!titles.loading && titles.error) === null && (
         <>
-          {" "}
           <div className="hero-bg">
-            <img src={bgURL} alt="bg" />
+            {/* <img src={bgURL} alt="bg" /> */}
+            <Player initialVideo="gO8N3L_aERg" />
+
             <div className="gradient" />
           </div>
           <main className="page-home">
