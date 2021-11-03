@@ -28,7 +28,7 @@ export default function Modal({ isOpen, onClose, element }) {
 
         <div className="illustration">
           {/* <img src={element.image_url} alt="" /> */}
-          <Player video={video} />
+          <Player video={video} autoplay="0" controls="1" />
           {/* <div className="gradient" /> */}
 
           <div className="bloc">

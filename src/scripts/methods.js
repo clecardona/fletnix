@@ -6,32 +6,11 @@ export function getById(id, array) {
   }
 }
 
-export function getSeries(array) {
-  if (array !== undefined) {
-    return array.filter((item) => {
-      return item.category === "serie";
-    });
-  }
-}
-
-export function getDocumentaries(array) {
-  if (array !== undefined) {
-    return array.filter((item) => {
-      return item.category === "documentary";
-    });
-  }
-}
-
-export function getFilms(array) {
-  if (array !== undefined) {
-    return array.filter((item) => {
-      return item.category === "film";
-    });
-  }
-}
-
 export function getCategory(array, category) {
   if (array !== undefined) {
+    if (category === "all") {
+      return array;
+    }
     return array.filter((item) => {
       return item.category === category;
     });

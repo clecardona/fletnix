@@ -16,14 +16,7 @@ import uploadFile from "scripts/storage";
 export async function createDoc(path: string, data: object) {
   const collectionReference = collection(firestoreInstance, path);
   let newCourse = { ...data };
-  console.log(data);
-
-  if (data.files !== [] && data.files[0].size) {
-    console.log("upload shoot");
-    const field = await getUrlNameArray(data.files);
-    newCourse.files = field;
-  }
-  await addDoc(collectionReference, newCourse);
+  await addDoc(collectionReference, data);
 }
 
 function getUrlNameArray(files) {

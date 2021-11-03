@@ -11,6 +11,7 @@ export default function InputField({ onChange, options, state }) {
     <>
       {key !== "avatarURL" && (
         <label className={key}>
+          {label} :
           <input
             ref={inputReference}
             value={state}

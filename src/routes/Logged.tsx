@@ -7,7 +7,7 @@ import Home from "components/Home";
 import Login from "components/AuthPages/Login";
 import SignUp from "components/AuthPages/Signup";
 import HeaderMenu from "components/shared/HeaderMenu";
-import Admin from "components/Admin";
+import Admin from "components/AdminPages/Admin";
 
 export default function Logged() {
   const { user } = useAuth();

@@ -10,11 +10,11 @@ export default function Episodes({ data, season, setVideo }) {
     <button
       key={index}
       className="episode"
-      onClick={() => setVideo("https://www.youtube.com/watch?v=gO8N3L_aERg")}
+      onClick={() => setVideo(item.video_url)}
     >
       <h1>{item.number}</h1>
       <div className="thumb">
-        <img src={mockURL} alt="" />
+        <img src={item.thumbnail_url} alt="" />
         <div className="bar" style={{ width: `${item.progress}%` }} />
       </div>
 
