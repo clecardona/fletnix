@@ -3,28 +3,48 @@ import { useState } from "react";
 
 //Local Files
 import remove from "assets/icns/remove.png";
+import fields from "components/AdminPages/assets/fields-episode.json";
+import InputField from "components/shared/InputField";
+import Player from "components/Player";
 
 export default function InputEpisode({ state, setForm }) {
-  const [season, setSeason] = useState(1);
+  const emptyEpisode = {
+    description: "",
+    video_url: "",
+    duration: "",
+    thumbnail_url: "",
+  };
+  const [seasonId, setSeasonId] = useState("");
   const [episodes, setEpisodes] = useState([]);
-  const [episode, setEpisode] = useState({});
+  const [episode, setEpisode] = useState(emptyEpisode);
   //methods
   function onChangeLink(value, index) {
     // const newSeason = [...state.links];
     //newSeason[index] = value;
     //setForm({ ...state, links: newLinks });
   }
-  console.log(state.seasons[season]);
-  function addEpisode() {
+  console.log(state.seasons[seasonId]);
+  console.log("episode :", episode);
+
+  function addEpisode(idx) {
     const newSeason = [...state.seasons];
-    newSeason.push({ episodes: [{}] });
+    const newEpisodes = newSeason[idx];
+    newEpisodes.episodes.push(emptyEpisode);
+    newSeason[idx] = newEpisodes;
+    setEpisode(emptyEpisode);
     setForm({ ...state, seasons: newSeason });
   }
 
   function clearField(idx) {
     const newSeason = [...state.seasons];
     newSeason.splice(idx, 1);
-    setForm({ ...state, seasons: newSeason });
+    //setForm({ ...state, seasons: newSeason });
+  }
+
+  // Methods
+  function onChange(key, value) {
+    const field = { [key]: value };
+    setEpisode({ ...episode, ...field });
   }
 
   //Component
@@ -36,39 +56,50 @@ export default function InputEpisode({ state, setForm }) {
   ));
 
   const Episodes = episodes.map((item, index) => (
-    <li key={index} className="list-item">
+    <li key={index}>
       <button
-        className="btn btn-orange"
+        className="btn-select"
         type="button"
         onClick={() => setEpisode(item)}
       >
-        Select
+        Episode {index + 1}
       </button>
-      <p>Episode {index + 1}</p>
     </li>
   ));
 
+  const EpisodeFields = fields.map((item) => (
+    <InputField
+      key={item.key}
+      options={item}
+      state={episode[item.key]}
+      onChange={onChange}
+    />
+  ));
+  //console.log(episode);
   return (
     <>
       <div className="seasons">
         <h2>Seasons : </h2>
         <label className="selector">
-          Select a season : {season}
+          Select a season :
           <select
             onChange={(e) => {
-              setSeason(e.target.value);
-              setEpisodes(state.seasons[e.target.value].episodes);
+              setSeasonId(e.target.value);
+              if (e.target.value) {
+                setEpisodes(state.seasons[e.target.value].episodes);
+              }
             }}
           >
+            <option value="">-</option>
             {Options}
           </select>
         </label>
-        {season !== "" && state.seasons[season].episodes && (
+        {seasonId !== "" && state.seasons[seasonId].episodes && (
           <>
             <ul>{Episodes}</ul>
             <button
               className="btn btn-add-field"
-              onClick={addEpisode}
+              onClick={() => addEpisode(seasonId)}
               type="button"
             >
               <h4> Add episode </h4>
@@ -78,10 +109,9 @@ export default function InputEpisode({ state, setForm }) {
       </div>
 
       <div className="episode">
-        <h2>Episode:</h2>
-        <p>{episode.number}</p>
-        <p>{episode.description}</p>
-        <p>{episode.thumbnail_url}</p>
+        <h2>Episode {episode.number} :</h2>
+        {episode.video_url && <Player video={episode.video_url} />}
+        <ul>{EpisodeFields}</ul>
       </div>
     </>
   );

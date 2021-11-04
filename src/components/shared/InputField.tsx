@@ -9,7 +9,7 @@ export default function InputField({ onChange, options, state }) {
 
   return (
     <>
-      {key !== "avatarURL" && (
+      {key !== "description" && (
         <label className={key}>
           {label} :
           <input
@@ -20,6 +20,30 @@ export default function InputField({ onChange, options, state }) {
             required={required}
             onChange={() => onChange(key, inputReference.current.value)}
           />
+          <p className="error">Enter valid stuff </p>
+        </label>
+      )}
+      {type === "textarea" && (
+        <label className={key}>
+          {label} :
+          <textarea
+            ref={inputReference}
+            value={state}
+            type={type}
+            placeholder={mode === "edit" ? state : placeholder}
+            required={required}
+            onChange={() => onChange(key, inputReference.current.value)}
+            cols="30"
+            rows="10"
+          ></textarea>
+          {/* <input
+            ref={inputReference}
+            value={state}
+            type={type}
+            placeholder={mode === "edit" ? state : placeholder}
+            required={required}
+            onChange={() => onChange(key, inputReference.current.value)}
+          /> */}
           <p className="error">Enter valid stuff </p>
         </label>
       )}

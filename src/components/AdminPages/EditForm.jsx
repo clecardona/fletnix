@@ -42,15 +42,15 @@ export default function EditForm({ data }) {
   //Components
 
   const Items = items.map((item, index) => (
-    <li key={index} className="list-item">
+    <li key={index} /* className="list-item" */>
       <button
-        className="btn btn-orange"
+        key={index}
+        className="btn-select"
         type="button"
         onClick={() => handleClick(item)}
       >
-        Select
+        {item.title}
       </button>
-      {item.title}
     </li>
   ));
 
@@ -68,20 +68,28 @@ export default function EditForm({ data }) {
       <div className="selector">
         <h2>Selection : </h2>
         <label>
-          Select a category : {item.category}
+          Select a category :
           <select
             onChange={(e) => {
               setItem({ ...item, category: e.target.value });
               setShowForm(false);
             }}
           >
+            <option value="none">-</option>
             <option value="serie">Serie</option>
             <option value="film">Film</option>
             <option value="documentary">Documentary</option>
             <option value="all">Show All</option>
           </select>
         </label>
-        {form.category !== "" && <ul>{Items}</ul>}
+        {item.category !== "none" && (
+          <>
+            <h3>
+              Titles from category <strong>{item.category}</strong>:
+            </h3>
+            <ul>{Items}</ul>
+          </>
+        )}
       </div>
 
       {showForm && (
