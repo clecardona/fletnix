@@ -15,6 +15,7 @@ export default function EditEpisode({ data,setForm,state,episodeId,seasonId }) {
   setForm(newState);
   }
 
+
   const EpisodeFields = fields.map((item) => (
     
       <InputField
@@ -28,7 +29,7 @@ export default function EditEpisode({ data,setForm,state,episodeId,seasonId }) {
 
   return (
     <div className="episode">
-      <h2>Episode {data.number} :</h2>
+      <h2>Season {seasonId +1} - Episode {episodeId +1} :</h2>
       {data.video_url && <Player video={data.video_url} />}
       <ul>{EpisodeFields}</ul>
     </div>

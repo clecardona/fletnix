@@ -29,9 +29,9 @@ export default function EditForm({ data }) {
     if (window.confirm("Do you confirm the changes ?")) {
       e.preventDefault();
       setErrorMessage("");
-      //await updateDocument("courses", data.id, { ...data, ...form });
-      //alert("Title successfully edited");
-      // history.push("/admin");
+      await updateDocument("title_test", form.id, { ...data, ...form });
+      alert("Title successfully edited");
+      history.push("/admin");
     }
   }
 

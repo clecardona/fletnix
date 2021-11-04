@@ -2,7 +2,6 @@
 import { useState } from "react";
 
 //Local imports
-import { useAuth } from "state/AuthProvider";
 import Sorter from "components/AdminPages/Sorter";
 import CreateForm from "./forms/CreateForm";
 import EditForm from "./forms/EditForm";
@@ -14,7 +13,7 @@ import useFetch from "hooks/useFetch";
 export default function Admin() {
   // Global state
   const { dispatchTitles } = useTitles();
-  const titles = useFetch("titles", dispatchTitles);
+  const titles = useFetch("title_test", dispatchTitles);
 
   //Local states
   const [selection, setSelection] = useState("edit");

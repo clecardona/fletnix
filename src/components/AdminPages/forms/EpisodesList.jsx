@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function EpisodesList({ data, setEpisodeId }) {
+export default function EpisodesList({ data, setEpisodeId, removeEpisode }) {
   //console.log(data);
 
   const Episodes = data.map((item, index) => (
@@ -10,12 +10,12 @@ export default function EpisodesList({ data, setEpisodeId }) {
         type="button"
         onClick={() => setEpisodeId(index)}
       >
-        Episode {item.number}
+        Episode {index + 1}
       </button>
       <button
         className="btn-delete"
         type="button"
-        //onClick={() => deleteEpisode(index)}
+        onClick={() => removeEpisode(index)}
       >
         x
       </button>
