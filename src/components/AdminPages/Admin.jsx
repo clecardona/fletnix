@@ -4,8 +4,8 @@ import { useState } from "react";
 //Local imports
 import { useAuth } from "state/AuthProvider";
 import Sorter from "components/AdminPages/Sorter";
-import CreateForm from "./CreateForm";
-import EditForm from "./EditForm";
+import CreateForm from "./forms/CreateForm";
+import EditForm from "./forms/EditForm";
 import { useTitles } from "state/TitlesProvider";
 import Spinner from "components/shared/Spinner";
 import BoxError from "components/shared/BoxError";

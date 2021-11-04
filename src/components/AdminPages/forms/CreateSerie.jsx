@@ -1,5 +1,5 @@
 import remove from "assets/icns/remove.png";
-export default function InputSerie({ state, setForm }) {
+export default function CreateSerie({ state, setForm }) {
   //methods
   function onChangeLink(value, index) {
     // const newSeason = [...state.links];
@@ -38,7 +38,7 @@ export default function InputSerie({ state, setForm }) {
 
   return (
     <div className="seasons">
-      <h4>Seasons : </h4>
+      <h2>Seasons : </h2>
       {Seasons}
       {state.seasons.length < 20 && (
         <button className="btn btn-add-field" onClick={addLink} type="button">

@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 //Local imports
-import fields from "./assets/fields-create.json";
+import fields from "../assets/fields-create.json";
 import InputField from "components/shared/InputField";
-import InputSerie from "./forms/InputSerie";
+import CreateSerie from "./CreateSerie";
 import { createDoc } from "scripts/fireStore";
 
 export default function CreateForm() {
@@ -51,6 +51,7 @@ export default function CreateForm() {
   return (
     <form onSubmit={onSubmit} className="form-admin">
       <label className="selector">
+        <h2>Selection : </h2>
         Select a category : {form.category}
         <select
           onChange={(e) => {
@@ -62,10 +63,13 @@ export default function CreateForm() {
           <option value="documentary">Documentary</option>
         </select>
       </label>
-      <div className="main-bloc">{Fields}</div>
+      <div className="general">
+        <h2>General informations : </h2>
+        <div className="main-bloc">{Fields}</div>
+      </div>
 
       {form.category !== "film" && (
-        <InputSerie state={form} setForm={setForm} />
+        <CreateSerie state={form} setForm={setForm} />
       )}
 
       <p>{errorMessage}</p>

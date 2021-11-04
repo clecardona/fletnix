@@ -11,7 +11,7 @@
     "key": "description",
     "label": "Description",
     "placeholder": "Short description",
-    "type": "text",
+    "type": "textarea",
     "mode": "create",
     "required": true
   },
