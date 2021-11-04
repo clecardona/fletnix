@@ -65,33 +65,40 @@ export default function EditForm({ data }) {
 
   return (
     <form onSubmit={onSubmit} className="form-admin">
-      <label className="selector">
-        Select a category : {item.category}
-        <select
-          onChange={(e) => {
-            setItem({ ...item, category: e.target.value });
-            setShowForm(false);
-          }}
-        >
-          <option value="serie">Serie</option>
-          <option value="film">Film</option>
-          <option value="documentary">Documentary</option>
-          <option value="all">Show All</option>
-        </select>
-      </label>
-      {form.category !== "" && <ul>{Items}</ul>}
+      <div className="selector">
+        <h2>Selection : </h2>
+        <label>
+          Select a category : {item.category}
+          <select
+            onChange={(e) => {
+              setItem({ ...item, category: e.target.value });
+              setShowForm(false);
+            }}
+          >
+            <option value="serie">Serie</option>
+            <option value="film">Film</option>
+            <option value="documentary">Documentary</option>
+            <option value="all">Show All</option>
+          </select>
+        </label>
+        {form.category !== "" && <ul>{Items}</ul>}
+      </div>
 
       {showForm && (
         <>
-          <h2>General informations : </h2>
-          <div className="main-bloc">{Fields}</div>
-          <p>{errorMessage}</p>
+          <div className="general">
+            <h2>General informations : </h2>
+            <div className="main-bloc">{Fields}</div>
+            <p>{errorMessage}</p>
+          </div>
+          {form.category !== "film" && (
+            <>
+              <InputEpisode state={form} setForm={setForm} />
+            </>
+          )}
           <button className="btn btn-submit btn-orange">
             <h4>Submit</h4>
           </button>{" "}
-          {form.category !== "film" && (
-            <InputEpisode state={form} setForm={setForm} />
-          )}
         </>
       )}
       {/* */}
