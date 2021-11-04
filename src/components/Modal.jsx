@@ -11,7 +11,7 @@ import Lister from "./Lister";
 import Player from "./Player";
 
 export default function Modal({ isOpen, onClose, element }) {
-  const [season, setSeason] = useState(1);
+  const [seasonId, setSeasonId] = useState(1);
   const [video, setVideo] = useState(element.trailer);
 
   const mockMatch = Math.floor(Math.random() * (100 - 80) + 80);
@@ -27,9 +27,8 @@ export default function Modal({ isOpen, onClose, element }) {
         </button>
 
         <div className="illustration">
-          {/* <img src={element.image_url} alt="" /> */}
           <Player video={video} autoplay="0" controls="1" />
-          {/* <div className="gradient" /> */}
+          {/* <div className="gradient" /> blocks the Youtube controls */}
 
           <div className="bloc">
             <h1>{element.title}</h1>
@@ -56,10 +55,10 @@ export default function Modal({ isOpen, onClose, element }) {
 
           {element.seasons && (
             <>
-              <Sorter data={element.seasons} hook={[season, setSeason]} />
+              <Sorter data={element.seasons} hook={[seasonId, setSeasonId]} />
               <Episodes
                 data={element.seasons}
-                season={season}
+                seasonId={seasonId}
                 setVideo={setVideo}
               />
             </>

@@ -12,11 +12,14 @@ export default function EditSerie({ state, setForm }) {
     duration: "",
     thumbnail_url: "",
   };
+  const emptySeason = {
+    episodes: [emptyEpisode],
+  };
 
   const [seasonId, setSeasonId] = useState(0);
   const [episodeId, setEpisodeId] = useState(0);
 
-  //console.log(state);
+  console.log(state);
 
   //methods
 
@@ -31,6 +34,14 @@ export default function EditSerie({ state, setForm }) {
     //console.log(newState.seasons[seasonId].episodes);
     newState.seasons[seasonId].episodes.splice(idx, 1);
     //console.log(newState.seasons[seasonId].episodes);
+    setForm(newState);
+  }
+  console.log(state.seasons);
+  function addSeason() {
+    const newState = { ...state };
+    console.log(newState.seasons);
+    newState.seasons.push(emptySeason);
+    console.log(newState.seasons);
     setForm(newState);
   }
 
@@ -60,6 +71,9 @@ export default function EditSerie({ state, setForm }) {
             {Options}
           </select>
         </label>
+        <button className="btn btn-add-field" onClick={addSeason} type="button">
+          <h4> Add season </h4>
+        </button>
         {seasonId !== "" && state.seasons[seasonId].episodes && (
           <>
             <EpisodesList

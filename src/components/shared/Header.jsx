@@ -2,7 +2,6 @@
 import { NavLink } from "react-router-dom";
 
 //Local files
-import { useAuth } from "state/AuthProvider";
 import fletnix from "assets/img/fletnix.png";
 
 export default function Header() {

@@ -1,9 +1,7 @@
 //@ts-nocheck
 //NPM Packages
-import { useState } from "react";
 
 //Local imports
-import { useAuth } from "state/AuthProvider";
 import useFetch from "hooks/useFetch";
 import Thumbs from "./Thumbs";
 import Thumbs10 from "./Thumbs10";
@@ -17,7 +15,7 @@ import Hero from "./Hero";
 export default function Teacher() {
   // Global state
   const { dispatchTitles } = useTitles();
-  const titles = useFetch("titles", dispatchTitles);
+  const titles = useFetch("title_test", dispatchTitles);
 
   //Local states
   const randomIndex = Math.floor(Math.random() * titles.data.length);
@@ -25,8 +23,6 @@ export default function Teacher() {
   const series = getCategory(titles.data, "serie");
   const films = getCategory(titles.data, "film");
   const documentaries = getCategory(titles.data, "documentary");
-
-  //const bgURL ="https://assets.upflix.pl/media/n/1619/2021/1uoksv2f1ocizt8xewywz27nqsr__1200_1600_r.jpg";
 
   return (
     <>

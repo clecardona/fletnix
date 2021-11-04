@@ -5,21 +5,18 @@ import { NavLink, useHistory } from "react-router-dom";
 //Local files
 import { useAuth } from "state/AuthProvider";
 import fletnix from "assets/img/fletnix.png";
-import loupe from "assets/img/loupe.png";
-import face from "assets/icns/face.png";
-import droparrow from "assets/icns/droparrow.svg";
+
+import Actions from "./Actions";
 
 export default function HeaderMenu() {
-  // Global state
-  const { user, setLoggedIn } = useAuth();
-  const [isOpen, setIsOpen] = useState(false);
+  // Local state
   const [scrollPosition, setScrollPosition] = useState(0);
-  const history = useHistory();
   const handleScroll = () => {
     const position = window.pageYOffset;
     setScrollPosition(position);
   };
 
+  // Hook
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
@@ -52,32 +49,7 @@ export default function HeaderMenu() {
           </NavLink>
         </nav>
       </div>
-      <div className="actions">
-        <div className={isOpen ? "searchbar-open" : "searchbar"}>
-          <button onClick={() => setIsOpen(!isOpen)}>
-            <img src={loupe} alt="" />
-          </button>
-          {isOpen && <input type="text" placeholder="Titles" />}
-        </div>
-
-        <div className="dropdown">
-          <img src={face} alt="" />
-          <img className="drop-arrow" src={droparrow} alt="" />
-
-          <div className="caret">
-            <img src={droparrow} alt="" />
-            <p>{user.username}</p>
-            <button
-              onClick={() => {
-                setLoggedIn(false);
-                history.push("/");
-              }}
-            >
-              Sign out of Fletnix
-            </button>
-          </div>
-        </div>
-      </div>
+      <Actions />
     </header>
   );
 }

@@ -1,10 +1,7 @@
 import React from "react";
 
-export default function Episodes({ data, season, setVideo }) {
-  const mockURL =
-    "https://assets.upflix.pl/media/n/1619/2021/1uoksv2f1ocizt8xewywz27nqsr__1200_1600_r.jpg";
-
-  const episodes = data[season - 1].episodes;
+export default function Episodes({ data, seasonId, setVideo }) {
+  const episodes = data[seasonId - 1].episodes;
 
   const Episodes = episodes.map((item, index) => (
     <button
@@ -12,18 +9,26 @@ export default function Episodes({ data, season, setVideo }) {
       className="episode"
       onClick={() => setVideo(item.video_url)}
     >
-      <h1>{item.number}</h1>
+      <h1>{index + 1}</h1>
       <div className="thumb">
         <img src={item.thumbnail_url} alt="" />
         <div className="bar" style={{ width: `${item.progress}%` }} />
       </div>
 
       <div className="title">
-        <h2>Episode {item.number}</h2>
+        <h2>Episode {index + 1}</h2>
         <h2>{item.duration}</h2>
       </div>
       <p className="description">{item.description}</p>
     </button>
   ));
-  return <section className="episodes">{Episodes}</section>;
+  if (episodes.length < 3) {
+    return (
+      <section className="episodes">
+        <h2 className="empty">Content coming soon...</h2>
+      </section>
+    );
+  } else {
+    return <section className="episodes">{Episodes}</section>;
+  }
 }

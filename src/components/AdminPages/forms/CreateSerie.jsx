@@ -19,7 +19,6 @@ export default function CreateSerie({ state, setForm }) {
     setForm({ ...state, seasons: newSeason });
   }
 
-  console.log(state.seasons);
   //Component
   const Seasons = state.seasons.map((item, index) => (
     <div className="links-item" key={index}>
