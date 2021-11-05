@@ -35,7 +35,7 @@ export default function App() {
   );
 
   useEffect(() => fetchUser("users"), [fetchUser]);
-
+  // forceRefresh={true} on BrowserRouter to try
   return (
     <div className="App">
       {status === 0 && <Spinner />}

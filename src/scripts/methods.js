@@ -19,6 +19,17 @@ export function getCategory(array, category) {
   }
 }
 
+export function searchTitle(array, query) {
+  if (query && array !== undefined) {
+    return array.filter((item) => {
+      const data = item.title.toLowerCase();
+      return data.includes(query.toLowerCase());
+    });
+  } else {
+    return [];
+  }
+}
+
 export function getTop10(list) {
   if (list !== undefined) {
     const filteredList = list.sort((a, b) => b.total_views - a.total_views);
