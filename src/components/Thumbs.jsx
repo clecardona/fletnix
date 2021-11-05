@@ -11,6 +11,7 @@ export default function Thumbs({ data, children }) {
     <li className="track-item" key={index}>
       <button onClick={() => setIsModalOpen(true)}>
         <img src={item.image_url} alt="" />
+        <h3>{item.title}</h3>
       </button>
       <Modal
         element={item}

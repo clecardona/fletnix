@@ -18,3 +18,12 @@ export function getCategory(array, category) {
     return [];
   }
 }
+
+export function getTop10(list) {
+  if (list !== undefined) {
+    const filteredList = list.sort((a, b) => b.total_views - a.total_views);
+    return filteredList.slice(0, 2);
+  } else {
+    return [];
+  }
+}

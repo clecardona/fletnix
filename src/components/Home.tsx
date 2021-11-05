@@ -8,7 +8,7 @@ import Thumbs10 from "./Thumbs10";
 import { useTitles } from "state/TitlesProvider";
 import Spinner from "components/shared/Spinner";
 import BoxError from "components/shared/BoxError";
-import { getCategory } from "scripts/methods";
+import { getCategory, getTop10 } from "scripts/methods";
 import Player from "components/Player";
 import Hero from "./Hero";
 
@@ -23,6 +23,7 @@ export default function Teacher() {
   const series = getCategory(titles.data, "serie");
   const films = getCategory(titles.data, "film");
   const documentaries = getCategory(titles.data, "documentary");
+  const top10 = getTop10(titles.data);
 
   return (
     <>
@@ -48,7 +49,7 @@ export default function Teacher() {
             <Thumbs data={documentaries} category="serie">
               Documentaries
             </Thumbs>
-            <Thumbs10 />
+            <Thumbs10 data={top10} />
             {/* <div className="footer-background" /> */}
           </main>
         </>

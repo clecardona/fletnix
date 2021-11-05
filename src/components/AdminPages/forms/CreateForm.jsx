@@ -13,13 +13,15 @@ export default function CreateForm() {
   const [form, setForm] = useState({
     title: "",
     description: "",
+    category: "film",
     image_url: "",
     trailer: "",
     year: "",
     cast: "",
     tags: "",
     duration: "",
-    seasons: [{ episodes: [{}] }],
+    total_views: 0,
+    seasons: [{ episodes: [{}] }], //[{ episodes: [{}] }]
   });
   const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
@@ -58,8 +60,8 @@ export default function CreateForm() {
             setForm({ ...form, category: e.target.value });
           }}
         >
-          <option value="serie">Serie</option>
           <option value="film">Film</option>
+          <option value="serie">Serie</option>
           <option value="documentary">Documentary</option>
         </select>
       </label>

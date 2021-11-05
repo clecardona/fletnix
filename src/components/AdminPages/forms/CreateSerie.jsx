@@ -1,11 +1,6 @@
 import remove from "assets/icns/remove.png";
 export default function CreateSerie({ state, setForm }) {
   //methods
-  function onChangeLink(value, index) {
-    // const newSeason = [...state.links];
-    //newSeason[index] = value;
-    //setForm({ ...state, links: newLinks });
-  }
 
   function addLink() {
     const newSeason = [...state.seasons];

@@ -1,18 +1,29 @@
-import React from "react";
+//NPM Packages
+import { useState } from "react";
 
-export default function Thumbs10() {
-  const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+//Local Files
+import Modal from "components/Modal";
 
-  const Thumbnails = array.map((item, index) => {
-    const imgPath = require("assets/icns/numbers/" + item + ".svg");
+export default function Thumbs10({ data }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const Thumbnails = data.map((item, index) => {
+    const imgName = index + 1;
+    const imgPath = require("assets/icns/numbers/" + imgName + ".svg");
     return (
       <li key={index}>
-        <img src={imgPath.default} alt="" className="rank" />
-        <img
-          className="thumb"
-          src="https://media.istockphoto.com/photos/pop-corn-and-on-red-armchair-cinema-picture-id1271522601?b=1&k=20&m=1271522601&s=170667a&w=0&h=azZRRchShbrwRgq58omc1HOYABnfDDOzXJatuaZrueQ="
-          alt=""
-        />
+        <button onClick={() => setIsModalOpen(true)}>
+          <img src={imgPath.default} alt="" className="rank" />
+          <h3>{item.title}</h3>
+          <img className="thumb" src={item.image_url} alt="" />
+        </button>
+        <Modal
+          element={item}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        >
+          New course
+        </Modal>
       </li>
     );
   });
