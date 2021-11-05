@@ -43,8 +43,12 @@ export default function Modal({ isOpen, onClose, element }) {
         <div className="container">
           <section className="meta">
             <div className="details">
-              {mockMatch}% Match {element.year} {element.advised_public}{" "}
-              {element.duration}
+              <p className="match">{mockMatch}% Match</p>
+              <p className="year">{element.year}</p>
+              <p className="public">
+                {element.advised_public ? element.advised_public : "13+"}
+              </p>
+              <p className="duration">{element.duration}</p>
             </div>
 
             <p className="description">{element.description}</p>
