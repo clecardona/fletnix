@@ -3,7 +3,7 @@ import ThumbsItem from "./ThumbsItem";
 
 export default function Thumbs({ data, children }) {
   const Thumbnails = data.map((item, index) => (
-    <ThumbsItem item={item} index={index} />
+    <ThumbsItem key={index} item={item} index={index} />
   ));
 
   return (

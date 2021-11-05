@@ -8,7 +8,7 @@ export default function Thumbs10Item({ item, index, imgPath }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <li className="track-item" key={index}>
+    <li className="track-item">
       <button onClick={() => setIsModalOpen(true)}>
         <img src={imgPath.default} alt="" className="rank" />
         <div className="wrapper">

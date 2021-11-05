@@ -9,12 +9,17 @@ import Episodes from "./Episodes";
 import Sorter from "./Sorter";
 import Lister from "./Lister";
 import Player from "./Player";
+import PlayerControlled from "./PlayerControlled";
 
 export default function Modal({ isOpen, onClose, element }) {
   const [seasonId, setSeasonId] = useState(1);
   const [video, setVideo] = useState(element.trailer);
+  const [titleVisibility, setTitleVisibility] = useState(true);
+  const [playVideo, setPlayVideo] = useState(0);
 
   const mockMatch = Math.floor(Math.random() * (100 - 80) + 80);
+
+  console.log(titleVisibility);
 
   if (!isOpen) return null;
   return reactDom.createPortal(
@@ -27,17 +32,23 @@ export default function Modal({ isOpen, onClose, element }) {
         </button>
 
         <div className="illustration">
-          <Player video={video} autoplay="0" controls="1" />
+          <PlayerControlled
+            video={video}
+            onPlay={() => setTitleVisibility(false)}
+            onPause={() => setTitleVisibility(true)}
+            autoplay={playVideo}
+          />
           {/* <div className="gradient" /> blocks the Youtube controls */}
-
-          <div className="bloc">
-            <h1>{element.title}</h1>
-            <div className="buttons">
-              <button className="btn-play">
-                <img src={play} alt="" /> Play
-              </button>
+          {titleVisibility && (
+            <div className="bloc">
+              <h1>{element.title}</h1>
+              <div className="buttons">
+                <button className="btn-play">
+                  <img src={play} alt="" onClick={() => setPlayVideo(1)} /> Play
+                </button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         <div className="container">

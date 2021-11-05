@@ -5,7 +5,9 @@ export default function Thumbs10({ data }) {
   const Thumbnails = data.map((item, index) => {
     const imgName = index + 1;
     const imgPath = require("assets/icns/numbers/" + imgName + ".svg");
-    return <Thumbs10Item item={item} index={index} imgPath={imgPath} />;
+    return (
+      <Thumbs10Item key={index} item={item} index={index} imgPath={imgPath} />
+    );
   });
 
   return (
