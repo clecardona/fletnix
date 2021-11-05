@@ -22,7 +22,7 @@ export function getCategory(array, category) {
 export function getTop10(list) {
   if (list !== undefined) {
     const filteredList = list.sort((a, b) => b.total_views - a.total_views);
-    return filteredList.slice(0, 2);
+    return filteredList.slice(0, 9);
   } else {
     return [];
   }

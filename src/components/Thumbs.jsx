@@ -1,27 +1,11 @@
-//NPM Packages
-import { useState } from "react";
-
 //Local Files
-import Modal from "components/Modal";
+import ThumbsItem from "./ThumbsItem";
 
 export default function Thumbs({ data, children }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const Thumbnails = data.map((item, index) => (
-    <li className="track-item" key={index}>
-      <button onClick={() => setIsModalOpen(true)}>
-        <img src={item.image_url} alt="" />
-        <h3>{item.title}</h3>
-      </button>
-      <Modal
-        element={item}
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      >
-        New course
-      </Modal>
-    </li>
+    <ThumbsItem item={item} index={index} />
   ));
+
   return (
     <>
       <section className="home-thumbs">

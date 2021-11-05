@@ -14,9 +14,8 @@ export default function Hero({ data }) {
         element={data}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-      >
-        New course
-      </Modal>
+      />
+
       <section className="bloc-title">
         <h1>{data.title}</h1>
         <h2>{data.description}</h2>
