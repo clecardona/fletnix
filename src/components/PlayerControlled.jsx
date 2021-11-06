@@ -6,19 +6,12 @@ import getYouTubeID from "get-youtube-id";
 export default function PlayerControlled({ video, onPlay, onPause, autoplay }) {
   const videoId = getYouTubeID(video);
 
-  const opts = {
-    height: "390",
-    width: "640",
-    playerVars: {
-      autoplay: autoplay,
-    },
-  };
-
   return (
     <div className="video-container">
       <YouTube
         videoId={videoId}
-        opts={opts}
+        //opts={opts}
+        //autoplay={1}
         onPlay={onPlay}
         onPause={onPause}
       />

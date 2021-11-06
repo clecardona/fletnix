@@ -19,7 +19,7 @@ export default function Modal({ isOpen, onClose, element }) {
 
   const mockMatch = Math.floor(Math.random() * (100 - 80) + 80);
 
-  console.log(titleVisibility);
+  //console.log(playVideo);
 
   if (!isOpen) return null;
   return reactDom.createPortal(
@@ -42,11 +42,11 @@ export default function Modal({ isOpen, onClose, element }) {
           {titleVisibility && (
             <div className="bloc">
               <h1>{element.title}</h1>
-              <div className="buttons">
-                <button className="btn-play">
-                  <img src={play} alt="" onClick={() => setPlayVideo(1)} /> Play
+              {/* <div className="buttons">
+                <button className="btn-play" onClick={() => setPlayVideo(1)}>
+                  <img src={play} alt="" /> PlayV
                 </button>
-              </div>
+              </div> */}
             </div>
           )}
         </div>
