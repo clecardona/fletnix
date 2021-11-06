@@ -29,6 +29,7 @@ export default function Actions() {
           <button
             onClick={() => {
               setLoggedIn(false);
+              localStorage.setItem("uid", "");
               history.push("/");
             }}
           >

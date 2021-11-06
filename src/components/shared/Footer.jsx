@@ -1,20 +1,30 @@
-import React from "react";
-
-import IconSocial from "./IconSocial";
-import iconsData from "assets/footer/icons.json";
-import contactData from "assets/footer/contact.json";
-
 export default function Footer() {
-  const contact = contactData[0];
-  const icons = iconsData[0];
-
   return (
-    <footer>
-      <ul>
-        <IconSocial icon={icons.linkedInURL} link={contact.linkedIn} />
-        <IconSocial icon={icons.githubURL} link={contact.github} />
-      </ul>
-      <span>© 2021 • {contact.fullname}</span>
+    <footer id="footer">
+      <div className="container">
+        <h3>Questions? Call 020-79 06 35</h3>
+        <ul>
+          <li>
+            <p>FAQ</p>
+          </li>
+          <li>
+            <p>Help Centre</p>
+          </li>
+          <li>
+            <p>Terms of Use</p>
+          </li>
+          <li>
+            <p>Privacy</p>
+          </li>
+          <li>
+            <p>Cookie Preferences</p>
+          </li>
+          <li>
+            <p>Corporate Information</p>
+          </li>
+        </ul>
+        <span>© 2021 • Clément Cardona</span>
+      </div>
     </footer>
   );
 }

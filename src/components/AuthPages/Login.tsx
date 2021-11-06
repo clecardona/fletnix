@@ -1,6 +1,6 @@
 //@ts-nocheck
 //NPM Packages
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import fletnixBg from "assets/img/fletnixBg.jpeg";
 
@@ -45,6 +45,17 @@ export default function Login() {
   function onFailure(code) {
     setMessage(code);
   }
+
+  function setStyle() {
+    document.getElementById("footer").style.background = "";
+    document.getElementById("footer").style.borderTop = "";
+    document.getElementById("header").style.background = "";
+  }
+
+  useEffect(() => {
+    setStyle();
+  }, []);
+
   //Components
   const Fields = fields.map((item) => (
     <>
@@ -93,7 +104,6 @@ export default function Login() {
             </Link>
           </p>
         </div>
-        <div className="footer-background" />
       </main>
     </>
   );
