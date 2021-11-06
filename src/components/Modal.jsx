@@ -4,22 +4,17 @@ import { useState } from "react";
 
 //Local Files
 import cross from "assets/icns/cross.png";
-import play from "assets/icns/play.png";
 import Episodes from "./Episodes";
 import Sorter from "./Sorter";
 import Lister from "./Lister";
-import Player from "./Player";
 import PlayerControlled from "./PlayerControlled";
 
 export default function Modal({ isOpen, onClose, element }) {
   const [seasonId, setSeasonId] = useState(1);
   const [video, setVideo] = useState(element.trailer);
   const [titleVisibility, setTitleVisibility] = useState(true);
-  const [playVideo, setPlayVideo] = useState(0);
 
   const mockMatch = Math.floor(Math.random() * (100 - 80) + 80);
-
-  //console.log(playVideo);
 
   if (!isOpen) return null;
   return reactDom.createPortal(
@@ -36,7 +31,6 @@ export default function Modal({ isOpen, onClose, element }) {
             video={video}
             onPlay={() => setTitleVisibility(false)}
             onPause={() => setTitleVisibility(true)}
-            autoplay={playVideo}
           />
           {/* <div className="gradient" /> blocks the Youtube controls */}
           {titleVisibility && (
