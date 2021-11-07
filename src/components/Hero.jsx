@@ -25,7 +25,12 @@ export default function Hero({ data }) {
       <Modal element={data} isOpen={isModalOpen} onClose={closeModal} />
 
       <section className="bloc-title">
-        <h1>{data.title}</h1>
+        {data.logo_url ? (
+          <img src={data.logo_url} alt="" className="title-illustration" />
+        ) : (
+          <h1>{data.title}</h1>
+        )}
+
         <h2>{data.description}</h2>
         <div className="buttons">
           <button className="btn-play" onClick={openModal}>

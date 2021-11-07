@@ -50,7 +50,6 @@ export default function Teacher() {
               Documentaries
             </Thumbs>
             <Thumbs10 data={top10} />
-            {/* <div className="footer-background" /> */}
           </main>
         </>
       )}

@@ -32,15 +32,17 @@ export default function Modal({ isOpen, onClose, element }) {
             onPlay={() => setTitleVisibility(false)}
             onPause={() => setTitleVisibility(true)}
           />
-          {/* <div className="gradient" /> blocks the Youtube controls */}
+          {/* <div className="gradient" /> disabled : hides the Youtube controls */}
           {titleVisibility && (
             <div className="bloc">
+              {element.logo_url && (
+                <img
+                  src={element.logo_url}
+                  alt=""
+                  className="title-illustration"
+                />
+              )}
               <h1>{element.title}</h1>
-              {/* <div className="buttons">
-                <button className="btn-play" onClick={() => setPlayVideo(1)}>
-                  <img src={play} alt="" /> PlayV
-                </button>
-              </div> */}
             </div>
           )}
         </div>
@@ -62,7 +64,7 @@ export default function Modal({ isOpen, onClose, element }) {
             <Lister data={element.tags}>tags</Lister>
           </section>
 
-          {element.seasons && (
+          {element.seasons && element.category !== "film" && (
             <>
               <Sorter data={element.seasons} hook={[seasonId, setSeasonId]} />
               <Episodes
