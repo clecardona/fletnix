@@ -1,6 +1,3 @@
-//NPM Packages
-import { useState } from "react";
-
 //Local Files
 import fields from "components/AdminPages/assets/fields-episode.json";
 import InputField from "components/shared/InputField";

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 //Local imports
 import fields from "../assets/fields-edit.json";
 import InputField from "components/shared/InputField";
-import { updateDocument } from "scripts/fireStore";
+import { updateDocument, deleteDocument } from "scripts/fireStore";
 import { getCategory } from "scripts/methods";
 import EditSerie from "./EditSerie";
 import Select from "./Select";
@@ -21,6 +21,10 @@ export default function EditForm({ data }) {
   const items = getCategory(data, item.category);
 
   // Methods
+  function onSelect(item) {
+    setForm(item);
+    setFormVisibility(true);
+  }
   function onChange(key, value) {
     const field = { [key]: value };
     setForm({ ...form, ...field });
@@ -35,13 +39,24 @@ export default function EditForm({ data }) {
     }
   }
 
-  function onSelect(item) {
-    setForm(item);
-    setFormVisibility(true);
-  }
-
-  function onDelete(element, text) {
-    alert("Shoot delete : " + text);
+  async function onDelete(e, item) {
+    console.log(item);
+    e.preventDefault();
+    const validationText = window.prompt(
+      "Please re-enter the title of the item to confirm deletion ( case insensitive ) ",
+      ""
+    );
+    if (
+      validationText &&
+      validationText.toLowerCase() === item.title.toLowerCase()
+    ) {
+      setErrorMessage("");
+      await deleteDocument("title_test", item.id);
+      alert(`Title [${item.title}]   deleted`);
+      history.push("/admin");
+    } else {
+      alert("The title of the item is not matching");
+    }
   }
 
   //Components
@@ -58,9 +73,9 @@ export default function EditForm({ data }) {
         <button
           className="btn-delete"
           type="button"
-          onClick={() => onDelete(item)}
+          onClick={(e) => onDelete(e, item)}
         >
-          x
+          X Delete Title
         </button>
       </>
     </li>

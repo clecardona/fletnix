@@ -35,7 +35,11 @@ export default function CreateForm() {
   async function onSubmit(e) {
     e.preventDefault();
     setErrorMessage("");
-    await createDoc("title_test", form);
+    let title = { ...form };
+    if (form.category === "film") {
+      title.seasons = null;
+    }
+    await createDoc("title_test", title);
     alert("Title created");
     history.push("/admin");
   }

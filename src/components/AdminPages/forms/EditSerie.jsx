@@ -18,10 +18,11 @@ export default function EditSerie({ state, setForm }) {
 
   const [seasonId, setSeasonId] = useState(0);
   const [episodeId, setEpisodeId] = useState(0);
+  const isEpisodes = state.seasons[seasonId].episodes.length > 0;
 
-  console.log(state);
+  //console.log(state);
 
-  //methods
+  //Methods
 
   function addEpisode() {
     const newState = { ...state };
@@ -30,13 +31,13 @@ export default function EditSerie({ state, setForm }) {
   }
 
   function removeEpisode(idx) {
-    const newState = { ...state };
-    //console.log(newState.seasons[seasonId].episodes);
-    newState.seasons[seasonId].episodes.splice(idx, 1);
-    //console.log(newState.seasons[seasonId].episodes);
-    setForm(newState);
+    if (window.confirm("Are you sure ?")) {
+      const newState = { ...state };
+      newState.seasons[seasonId].episodes.splice(idx, 1);
+      setForm(newState);
+    }
   }
-  console.log(state.seasons);
+  //console.log(state.seasons);
   function addSeason() {
     const newState = { ...state };
     console.log(newState.seasons);
@@ -45,18 +46,13 @@ export default function EditSerie({ state, setForm }) {
     setForm(newState);
   }
 
-  // Methods
-
-  //console.log(episode);
-
   //Component
-
   const Options = state.seasons.map((item, index) => (
     <option key={index} value={index}>
       Season {index + 1}
     </option>
   ));
-
+  //console.log(state.seasons[seasonId].episodes.length);
   return (
     <>
       <div className="seasons">
@@ -74,7 +70,7 @@ export default function EditSerie({ state, setForm }) {
         <button className="btn btn-add-field" onClick={addSeason} type="button">
           <h4> Add season </h4>
         </button>
-        {seasonId !== "" && state.seasons[seasonId].episodes && (
+        {seasonId !== "" && (
           <>
             <EpisodesList
               data={state.seasons[seasonId].episodes}
@@ -91,14 +87,15 @@ export default function EditSerie({ state, setForm }) {
           </>
         )}
       </div>
-
-      <EditEpisode
-        data={state.seasons[seasonId].episodes[episodeId]}
-        episodeId={episodeId}
-        seasonId={seasonId}
-        state={state}
-        setForm={setForm}
-      />
+      {seasonId !== "" && isEpisodes && (
+        <EditEpisode
+          data={state.seasons[seasonId].episodes[episodeId]}
+          episodeId={episodeId}
+          seasonId={seasonId}
+          state={state}
+          setForm={setForm}
+        />
+      )}
     </>
   );
 }
