@@ -57,28 +57,27 @@ export default function Login() {
   }, []);
 
   //Components
-  const Fields = fields.map((item) => (
-    <>
+  const Fields = fields.map((item, index) => (
+    <div key={index}>
       <InputField
         key={item.key}
         options={item}
         state={form[item.key]}
         onChange={onChange}
       />
-    </>
+    </div>
   ));
 
   return (
     <>
       <main className="page-login">
         <img src={fletnixBg} alt="bg" className="bg" />
-        <div className="logo">Fletnix</div>
 
         <div className="bloc">
           <form onSubmit={onSubmit}>
             <h1 className="title">Sign In</h1>
             {Fields}
-            <p>{message}</p>
+            <p className="error-firebase">{message}</p>
 
             <div className="remember-recover">
               <label className="remember">

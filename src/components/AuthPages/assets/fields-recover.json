@@ -3,6 +3,7 @@
     "key": "email",
     "label": "Email",
     "placeholder": "youremail@provider.com",
-    "type": "email"
+    "type": "email",
+    "error": "Please enter a valid email address."
   }
 ]

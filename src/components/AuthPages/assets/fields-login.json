@@ -3,12 +3,14 @@
     "key": "email",
     "label": "Email",
     "placeholder": "Email",
-    "type": "email"
+    "type": "email",
+    "error": "Please enter a valid email address."
   },
   {
     "key": "password",
     "label": "Password",
     "placeholder": "Password",
-    "type": "password"
+    "type": "password",
+    "error": "Your password must contain between 4 and 60 characters."
   }
 ]

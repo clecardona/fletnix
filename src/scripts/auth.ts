@@ -6,6 +6,7 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 import { authInstance } from "./firebase";
+import getFriendlyError from "./messages";
 
 export async function createAccount(email: string, password: string) {
   const account = { isCreated: false, payload: "" };
@@ -37,7 +38,8 @@ export async function signIn(email: string, password: string) {
     account.payload = userCredential.user.uid;
     account.isLogged = true;
   } catch (error) {
-    account.payload = error.message;
+    //console.log(typeof error.code);
+    account.payload = getFriendlyError(error.code);
   }
   return account;
 }

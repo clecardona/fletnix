@@ -2,11 +2,15 @@
 import { useRef } from "react";
 
 export default function InputField({ onChange, options, state }) {
-  const { key, label, placeholder, type, mode, required } = options;
+  const { key, label, placeholder, type, mode, required, error } = options;
 
   // Properties
   const inputReference = useRef(null);
 
+  const emptyField = state && state.trim().length < 1;
+  const noAtSign = state && key === "email" && !state.includes("@");
+
+  console.log(state);
   return (
     <>
       {key !== "description" && (
@@ -20,7 +24,7 @@ export default function InputField({ onChange, options, state }) {
             required={required}
             onChange={() => onChange(key, inputReference.current.value)}
           />
-          <p className="error">Enter valid stuff </p>
+          {(noAtSign || emptyField) && <p className="error">{error}</p>}
         </label>
       )}
       {type === "textarea" && (
@@ -35,16 +39,8 @@ export default function InputField({ onChange, options, state }) {
             onChange={() => onChange(key, inputReference.current.value)}
             cols="30"
             rows="10"
-          ></textarea>
-          {/* <input
-            ref={inputReference}
-            value={state}
-            type={type}
-            placeholder={mode === "edit" ? state : placeholder}
-            required={required}
-            onChange={() => onChange(key, inputReference.current.value)}
-          /> */}
-          <p className="error">Enter valid stuff </p>
+          />
+          {emptyField && <p className="error">{error} </p>}
         </label>
       )}
     </>

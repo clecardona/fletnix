@@ -34,16 +34,20 @@
                 margin-bottom: 28px
 
             label
+                &.email,&.password
+                    color: transparent
 
                 input
                     width: 100%
                     font-size: 16px
                     color: $gray9
 
-            .error
+            .error,.error-firebase
                 color: orange
-                border-top: 2px solid orange
                 padding: 6px 0
+
+            .error
+                border-top: 2px solid orange
 
             .remember-recover
                 display: grid
