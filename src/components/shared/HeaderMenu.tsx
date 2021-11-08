@@ -1,5 +1,5 @@
 //NPM Packages
-import { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import { NavLink } from "react-router-dom";
 
 //Local files
@@ -7,7 +7,7 @@ import fletnix from "assets/img/fletnix.png";
 
 import Actions from "./Actions";
 
-export default function HeaderMenu() {
+const HeaderMenu: FC = () => {
   // Local state
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -46,4 +46,5 @@ export default function HeaderMenu() {
       <Actions />
     </header>
   );
-}
+};
+export default HeaderMenu;

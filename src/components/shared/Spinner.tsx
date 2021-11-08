@@ -1,6 +1,7 @@
-import React from "react";
+//NPM Packages
+import { FC } from "react";
 
-export default function Spinner() {
+const Spinner: FC = () => {
   return (
     <div className="spinner-container">
       <div className="spinner">
@@ -10,4 +11,5 @@ export default function Spinner() {
       </div>
     </div>
   );
-}
+};
+export default Spinner;

@@ -1,8 +1,11 @@
-export default function Footer() {
+//NPM Packages
+import { FC } from "react";
+
+const Footer: FC = () => {
   return (
     <footer id="footer">
       <div className="container">
-        <h3>Questions? Call 020-79 06 35</h3>
+        <h3>Questions? Call 040-79 06 35</h3>
         <ul>
           <li>
             <p>FAQ</p>
@@ -27,4 +30,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

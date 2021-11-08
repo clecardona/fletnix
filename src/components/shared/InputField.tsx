@@ -10,7 +10,6 @@ export default function InputField({ onChange, options, state }) {
   const emptyField = state && state.trim().length < 1;
   const noAtSign = state && key === "email" && !state.includes("@");
 
-  //console.log(state);
   return (
     <>
       {key !== "description" && (

@@ -1,8 +1,11 @@
-import loupe from "assets/img/loupe.png";
-import { useState } from "react";
+//NPM Packages
+import { useState, FC } from "react";
 import { useHistory } from "react-router-dom";
 
-export default function SearchBar() {
+//Local Files
+import loupe from "assets/img/loupe.png";
+
+const SearchBar: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const history = useHistory();
@@ -22,4 +25,6 @@ export default function SearchBar() {
       )}
     </div>
   );
-}
+};
+
+export default SearchBar;
