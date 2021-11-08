@@ -21,8 +21,12 @@ export default function ThumbsItem({ item, index }) {
   return (
     <li className="track-item" key={index}>
       <button onClick={openModal}>
-        <img src={item.image_url} alt="" />
-        <h3>{item.title}</h3>
+        <img src={item.image_url} alt="" className="thumbnail" />
+        {item.logo_url ? (
+          <img src={item.logo_url} alt="" className="title-illustration" />
+        ) : (
+          <h3>{item.title}</h3>
+        )}
       </button>
       <Modal element={item} isOpen={isModalOpen} onClose={closeModal} />
     </li>

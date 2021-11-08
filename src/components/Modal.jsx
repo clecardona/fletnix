@@ -64,7 +64,7 @@ export default function Modal({ isOpen, onClose, element }) {
             <Lister data={element.tags}>tags</Lister>
           </section>
 
-          {element.seasons && element.category !== "film" && (
+          {element.seasons && element.category === "serie" && (
             <>
               <Sorter data={element.seasons} hook={[seasonId, setSeasonId]} />
               <Episodes

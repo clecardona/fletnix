@@ -104,7 +104,7 @@ export default function EditForm({ data }) {
             <h2>General informations : </h2>
             <div className="main-bloc">{GeneralFields}</div>
           </div>
-          {form.category !== "film" && (
+          {form.category === "serie" && (
             <EditSerie state={form} setForm={setForm} handleDelete={onDelete} />
           )}
           <p>{errorMessage}</p>

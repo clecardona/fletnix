@@ -36,7 +36,7 @@ export default function CreateForm() {
     e.preventDefault();
     setErrorMessage("");
     let title = { ...form };
-    if (form.category === "film") {
+    if (form.category === "film" || "documentary") {
       title.seasons = null;
     }
     await createDoc("title_test", title);
@@ -74,7 +74,7 @@ export default function CreateForm() {
         <div className="main-bloc">{Fields}</div>
       </div>
 
-      {form.category !== "film" && (
+      {form.category === "seri" && (
         <CreateSerie state={form} setForm={setForm} />
       )}
 
