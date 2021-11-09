@@ -23,7 +23,11 @@ export default function Thumbs10Item({ item, index, imgPath }) {
       <button onClick={openModal}>
         <img src={imgPath.default} alt="" className="rank" />
         <div className="wrapper">
-          <h3>{item.title}</h3>
+          {item.logo_url ? (
+            <img src={item.logo_url} alt="" className="title-illustration-10" />
+          ) : (
+            <h3>{item.title}</h3>
+          )}
           <img className="thumb" src={item.image_url} alt="" />
         </div>
       </button>
