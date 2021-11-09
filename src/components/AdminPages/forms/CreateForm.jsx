@@ -36,7 +36,7 @@ export default function CreateForm() {
     e.preventDefault();
     setErrorMessage("");
     let title = { ...form };
-    if (form.category === "film" || "documentary") {
+    if (form.category !== "serie") {
       title.seasons = null;
     }
     await createDoc("title_test", title);

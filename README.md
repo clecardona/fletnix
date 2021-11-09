@@ -13,12 +13,12 @@ This project was bootstrapped with Create React App.
 
 This is a carbon copy of Netflix, for educational purpose only.
 
-<!-- #### [Go to website](https://lms-football.web.app/)
+#### [Go to website](https://fletnix-3640a.web.app/)
 
-In order to access the teacher section here are credentials:
+In order to access the Content creator section here are credentials:
 
-- email : admina@admin.com
-- password : adminadmin -->
+- email : contentcreator@gmail.se
+- password : contentCreator
 
 ## 2. Setup
 
