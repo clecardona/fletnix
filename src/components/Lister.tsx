@@ -1,6 +1,11 @@
-import React from "react";
+import { FC } from "react";
 
-export default function Lister({ data, children }) {
+interface IProps {
+  data: string[];
+  children: string;
+}
+
+const Lister: FC<IProps> = ({ data, children }) => {
   const list = data.toString();
 
   return (
@@ -11,4 +16,5 @@ export default function Lister({ data, children }) {
       </p>
     </div>
   );
-}
+};
+export default Lister;

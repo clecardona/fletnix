@@ -1,6 +1,6 @@
 //NPM Packages
 import reactDom from "react-dom";
-import { useState } from "react";
+import { useState, FC } from "react";
 
 //Local Files
 import cross from "assets/icns/cross.png";
@@ -9,12 +9,19 @@ import Sorter from "./Sorter";
 import Lister from "./Lister";
 import PlayerControlled from "./PlayerControlled";
 
+interface IProps {
+  isOpen: boolean;
+  onClose(): void;
+  element: object;
+}
+
 export default function Modal({ isOpen, onClose, element }) {
   const [seasonId, setSeasonId] = useState(1);
   const [video, setVideo] = useState(element.trailer);
   const [titleVisibility, setTitleVisibility] = useState(true);
 
   const mockMatch = Math.floor(Math.random() * (100 - 80) + 80);
+  console.log(onClose);
 
   if (!isOpen) return null;
   return reactDom.createPortal(
