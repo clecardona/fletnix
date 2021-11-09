@@ -2,7 +2,7 @@ import remove from "assets/icns/remove.png";
 export default function CreateSerie({ state, setForm }) {
   //methods
 
-  function addLink() {
+  function addSeason() {
     const newSeason = [...state.seasons];
     newSeason.push({ episodes: [{}] });
     setForm({ ...state, seasons: newSeason });
@@ -35,7 +35,7 @@ export default function CreateSerie({ state, setForm }) {
       <h2>Seasons : </h2>
       {Seasons}
       {state.seasons.length < 20 && (
-        <button className="btn btn-add-field" onClick={addLink} type="button">
+        <button className="btn btn-add-field" onClick={addSeason} type="button">
           <h4> Add a season </h4>
         </button>
       )}

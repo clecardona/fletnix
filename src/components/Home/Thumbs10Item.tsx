@@ -1,11 +1,17 @@
 //NPM Packages
-import { useState } from "react";
+import { useState, FC } from "react";
 
 //Local Files
-import Modal from "components/Modal";
+import Modal from "components/Modal/Modal";
 import { fixBG, unfixBG } from "scripts/modal";
+import iTitle from "types/iTitle";
 
-export default function Thumbs10Item({ item, index, imgPath }) {
+interface IProps {
+  item: iTitle;
+  imgPath: any;
+}
+
+const Thumbs10Item: FC<IProps> = ({ item, imgPath }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   function openModal() {
@@ -34,4 +40,5 @@ export default function Thumbs10Item({ item, index, imgPath }) {
       <Modal element={item} isOpen={isModalOpen} onClose={closeModal} />
     </li>
   );
-}
+};
+export default Thumbs10Item;

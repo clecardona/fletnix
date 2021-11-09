@@ -5,9 +5,8 @@ import { useParams } from "react-router-dom";
 import { searchTitle } from "scripts/methods";
 import { useTitles } from "state/TitlesProvider";
 import useFetch from "hooks/useFetch";
-import Spinner from "components/shared/Spinner";
-import BoxError from "components/shared/BoxError";
-import Thumbs from "./Thumbs";
+import { BoxError, Spinner } from "components/shared/FetchItems";
+import ThumbsCategory from "../Category/ThumbsCategory";
 
 export default function Search() {
   // Global state
@@ -24,9 +23,11 @@ export default function Search() {
       {titles.error !== null && <BoxError />}
 
       {(!titles.loading && titles.error) === null && (
-        <main className="page-home">
+        <main className="page-home page-search">
           {results.length === 0 && <h1>No titles found ... </h1>}
-          {results.length > 0 && <Thumbs data={results}>Results</Thumbs>}
+          {results.length > 0 && (
+            <ThumbsCategory data={results}>Results</ThumbsCategory>
+          )}
         </main>
       )}
     </>

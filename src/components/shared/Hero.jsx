@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import play from "assets/icns/play.png";
 import info from "assets/icns/info.png";
-import Modal from "components/Modal";
+import Modal from "components/Modal/Modal";
 import { fixBG, unfixBG } from "scripts/modal";
 
 export default function Hero({ data }) {

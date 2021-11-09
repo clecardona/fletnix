@@ -1,9 +1,19 @@
-import React from "react";
+//NPM Packages
+import { FC } from "react";
 
-export default function Episodes({ data, seasonId, setVideo }) {
+//Local Files
+import iEpisode from "types/iEpisode";
+
+interface IProps {
+  data: any[];
+  seasonId: number;
+  setVideo(arg: string): void;
+}
+
+const Episodes: FC<IProps> = ({ data, seasonId, setVideo }) => {
   const episodes = data[seasonId - 1].episodes;
 
-  const Episodes = episodes.map((item, index) => (
+  const Episodes = episodes.map((item: iEpisode, index: number) => (
     <button
       key={index}
       className="episode"
@@ -22,6 +32,7 @@ export default function Episodes({ data, seasonId, setVideo }) {
       <p className="description">{item.description}</p>
     </button>
   ));
+
   if (episodes.length < 3) {
     return (
       <section className="episodes">
@@ -31,4 +42,5 @@ export default function Episodes({ data, seasonId, setVideo }) {
   } else {
     return <section className="episodes">{Episodes}</section>;
   }
-}
+};
+export default Episodes;

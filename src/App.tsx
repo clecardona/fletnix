@@ -10,8 +10,7 @@ import { getDocument } from "scripts/fireStore";
 import Logged from "routes/Logged";
 import Unlogged from "routes/Unlogged";
 import Footer from "components/shared/Footer";
-import Spinner from "components/shared/Spinner";
-import BoxError from "components/shared/BoxError";
+import { BoxError, Spinner } from "components/shared/FetchItems";
 
 export default function App() {
   // Global state

@@ -1,15 +1,16 @@
 //NPM Packages
 import { NavLink, useHistory } from "react-router-dom";
+import { FC } from "react";
 
 //Local Files
-
 import face from "assets/icns/face.png";
 import droparrow from "assets/icns/droparrow.svg";
 import { useAuth } from "state/AuthProvider";
 import SearchBar from "./SearchBar";
 
-export default function Actions() {
+const Actions: FC = () => {
   // Global state
+  //@ts-ignore
   const { user, setLoggedIn } = useAuth();
   const history = useHistory();
 
@@ -39,4 +40,5 @@ export default function Actions() {
       </div>
     </div>
   );
-}
+};
+export default Actions;

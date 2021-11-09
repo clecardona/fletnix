@@ -11,11 +11,12 @@ export default function EditSerie({ state, setForm }) {
     video_url: "",
     duration: "",
     thumbnail_url: "",
+    progress: 0,
   };
   const emptySeason = {
     episodes: [emptyEpisode],
   };
-
+  console.log(state);
   const [seasonId, setSeasonId] = useState(0);
   const [episodeId, setEpisodeId] = useState(0);
   const isEpisodes = state.seasons[seasonId].episodes.length > 0;

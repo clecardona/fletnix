@@ -13,13 +13,14 @@ export default function Recover() {
   //Local states
   const [form, setForm] = useState({ email: "" });
   const [message, setMessage] = useState("");
+  const history = useHistory();
 
   // Methods
   function onChange(key, value) {
     const field = { [key]: value };
     setForm({ ...form, ...field });
   }
-  console.log(message);
+
   async function onSubmit(e) {
     e.preventDefault();
     setMessage("");
@@ -29,6 +30,7 @@ export default function Recover() {
 
   async function onSuccess(message) {
     setMessage(message);
+    history.push("/");
   }
 
   function onFailure(errorMessage) {
@@ -44,6 +46,7 @@ export default function Recover() {
   useEffect(() => {
     setStyle();
   }, []);
+
   //Components
   const Fields = fields.map((item) => (
     <InputField

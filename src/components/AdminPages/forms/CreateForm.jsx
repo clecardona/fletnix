@@ -21,6 +21,7 @@ export default function CreateForm() {
     tags: "",
     duration: "",
     total_views: 0,
+    progress: 0,
     seasons: [{ episodes: [{}] }], //[{ episodes: [{}] }]
   });
   const [errorMessage, setErrorMessage] = useState("");

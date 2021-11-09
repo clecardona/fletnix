@@ -1,25 +1,27 @@
-//@ts-nocheck
 //NPM Packages
+import { FC } from "react";
 
 //Local imports
 import useFetch from "hooks/useFetch";
-import Thumbs from "./Thumbs";
-import Thumbs10 from "./Thumbs10";
+import Thumbs from "components/shared/Thumbs";
+import Thumbs10 from "components/Home/Thumbs10";
 import { useTitles } from "state/TitlesProvider";
-import Spinner from "components/shared/Spinner";
-import BoxError from "components/shared/BoxError";
+import { BoxError, Spinner } from "components/shared/FetchItems";
 import { getCategory, getTop10 } from "scripts/methods";
-import Player from "components/Player";
-import Hero from "./Hero";
+import Player from "components/shared/Player";
+import Hero from "components/shared/Hero";
+import iTitle from "types/iTitle";
 
-export default function Teacher() {
+const Home: FC = () => {
   // Global state
+  //@ts-ignore
   const { dispatchTitles } = useTitles();
   const titles = useFetch("title_test", dispatchTitles);
 
   //Local states
+  const autoplay = "0"; //Change to "1" here  to have video background in production
   const randomIndex = Math.floor(Math.random() * titles.data.length);
-  const randomTitle = titles.data[randomIndex];
+  const randomTitle: iTitle = titles.data[randomIndex];
   const series = getCategory(titles.data, "serie");
   const films = getCategory(titles.data, "film");
   const documentaries = getCategory(titles.data, "documentary");
@@ -33,26 +35,23 @@ export default function Teacher() {
       {(!titles.loading && titles.error) === null && (
         <>
           <div className="hero-bg">
-            <Player video={randomTitle.trailer} autoplay="0" controls="0" />
-
+            <Player
+              video={randomTitle.trailer}
+              autoplay={autoplay}
+              controls="0"
+            />
             <div className="gradient" />
           </div>
           <main className="page-home">
             <Hero data={randomTitle} />
-
-            <Thumbs data={series} category="serie">
-              Series
-            </Thumbs>
-            <Thumbs data={films} category="film">
-              Films
-            </Thumbs>
-            <Thumbs data={documentaries} category="serie">
-              Documentaries
-            </Thumbs>
+            <Thumbs data={series}>Series</Thumbs>
+            <Thumbs data={films}>Films</Thumbs>
+            <Thumbs data={documentaries}>Documentaries</Thumbs>
             <Thumbs10 data={top10} />
           </main>
         </>
       )}
     </>
   );
-}
+};
+export default Home;

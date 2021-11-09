@@ -1,7 +1,16 @@
-import { useState } from "react";
-import droparrow from "assets/icns/droparrow.svg";
+//NPM Packages
+import { useState, FC } from "react";
 
-export default function Sorter({ data, hook }) {
+//Local Files
+import droparrow from "assets/icns/droparrow.svg";
+import iSeason from "types/iSeason";
+
+interface IProps {
+  data: iSeason[];
+  hook: any[];
+}
+
+const Sorter: FC<IProps> = ({ data, hook }) => {
   const [season, setSeason] = hook;
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,4 +40,5 @@ export default function Sorter({ data, hook }) {
       {isOpen && <ul className="caret">{ListItems}</ul>}
     </section>
   );
-}
+};
+export default Sorter;

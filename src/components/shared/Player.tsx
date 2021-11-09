@@ -1,9 +1,14 @@
 //NPM Packages
+import { FC } from "react";
 import getYouTubeID from "get-youtube-id";
 
-//Local Files
+interface IProps {
+  video: string;
+  autoplay: string;
+  controls: string;
+}
 
-export default function Player({ video, autoplay, controls }) {
+const Player: FC<IProps> = ({ video, autoplay, controls }) => {
   const videoId = getYouTubeID(video);
 
   return (
@@ -19,4 +24,5 @@ export default function Player({ video, autoplay, controls }) {
       />
     </div>
   );
-}
+};
+export default Player;

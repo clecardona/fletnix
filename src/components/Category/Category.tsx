@@ -1,30 +1,31 @@
 //NPM Packages
 import { useParams } from "react-router-dom";
+import { FC } from "react";
 
 //Local Files
 import { useTitles } from "state/TitlesProvider";
 import useFetch from "hooks/useFetch";
-import Spinner from "components/shared/Spinner";
-import BoxError from "components/shared/BoxError";
+import { BoxError, Spinner } from "components/shared/FetchItems";
 import ThumbsCategory from "./ThumbsCategory";
-import Player from "components/Player";
+import Player from "components/shared/Player";
 import { getCategory } from "scripts/methods";
-import Hero from "./Hero";
+import Hero from "../shared/Hero";
 
-export default function Category() {
+const Category: FC = () => {
   // Global state
+  //@ts-ignore
   const { dispatchTitles } = useTitles();
   const titles = useFetch("title_test", dispatchTitles);
 
   //Local states
+  //@ts-ignore
   const { category } = useParams();
   const categoryTitles = getCategory(titles.data, category);
-  const longArray = titles.data.concat(titles.data, titles.data);
 
   const randomIndex = Math.floor(Math.random() * categoryTitles.length);
   const randomTitle = categoryTitles[randomIndex];
 
-  function getHeading(cat) {
+  function getHeading(cat: string): string {
     switch (cat) {
       case "film":
         return "Films";
@@ -33,16 +34,14 @@ export default function Category() {
       case "documentary":
         return "Documentaries";
       default:
-        break;
+        return "";
     }
   }
 
-  console.log(category, categoryTitles);
   return (
     <>
       {titles.loading === true && <Spinner />}
       {titles.error !== null && <BoxError />}
-
       {(!titles.loading && titles.error) === null && (
         <>
           <div className="hero-bg">
@@ -64,4 +63,5 @@ export default function Category() {
       )}
     </>
   );
-}
+};
+export default Category;

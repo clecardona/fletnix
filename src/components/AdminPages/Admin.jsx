@@ -6,8 +6,7 @@ import Sorter from "components/AdminPages/Sorter";
 import CreateForm from "./forms/CreateForm";
 import EditForm from "./forms/EditForm";
 import { useTitles } from "state/TitlesProvider";
-import Spinner from "components/shared/Spinner";
-import BoxError from "components/shared/BoxError";
+import { BoxError, Spinner } from "components/shared/FetchItems";
 import useFetch from "hooks/useFetch";
 
 export default function Admin() {

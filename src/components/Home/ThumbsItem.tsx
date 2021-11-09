@@ -1,11 +1,16 @@
 //NPM Packages
-import { useState } from "react";
+import { useState, FC } from "react";
 
 //Local Files
-import Modal from "components/Modal";
+import Modal from "components/Modal/Modal";
 import { fixBG, unfixBG } from "scripts/modal";
+import iTitle from "types/iTitle";
 
-export default function ThumbsItem({ item, index }) {
+interface IProps {
+  item: iTitle;
+}
+
+const ThumbsItem: FC<IProps> = ({ item }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   function openModal() {
@@ -19,7 +24,7 @@ export default function ThumbsItem({ item, index }) {
   }
 
   return (
-    <li className="track-item" key={index}>
+    <li className="track-item">
       <button onClick={openModal}>
         <img src={item.image_url} alt="" className="thumbnail" />
         {item.logo_url ? (
@@ -31,4 +36,5 @@ export default function ThumbsItem({ item, index }) {
       <Modal element={item} isOpen={isModalOpen} onClose={closeModal} />
     </li>
   );
-}
+};
+export default ThumbsItem;

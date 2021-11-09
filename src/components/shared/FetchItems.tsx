@@ -1,7 +1,15 @@
 //NPM Packages
 import { FC } from "react";
 
-const Spinner: FC = () => {
+export const BoxError: FC = () => {
+  return (
+    <div className="load-error">
+      Cannot load data . Please check your connection
+    </div>
+  );
+};
+
+export const Spinner: FC = () => {
   return (
     <div className="spinner-container">
       <div className="spinner">
@@ -12,4 +20,3 @@ const Spinner: FC = () => {
     </div>
   );
 };
-export default Spinner;

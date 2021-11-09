@@ -1,7 +1,7 @@
 //Local Files
 import fields from "components/AdminPages/assets/fields-episode.json";
 import InputField from "components/shared/InputField";
-import Player from "components/Player";
+import Player from "components/shared/Player";
 
 export default function EditEpisode({ data,setForm,state,episodeId,seasonId }) {
  

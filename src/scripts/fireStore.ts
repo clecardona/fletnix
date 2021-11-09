@@ -15,17 +15,16 @@ import uploadFile from "scripts/storage";
 // Create doc with auto id
 export async function createDoc(path: string, data: object) {
   const collectionReference = collection(firestoreInstance, path);
-  let newCourse = { ...data };
   await addDoc(collectionReference, data);
 }
 
-function getUrlNameArray(files) {
+/* function getUrlNameArray(files) {
   let promises = files.map(async (item) => {
     const url = await uploadFile(item);
     return { name: item.name, url: url };
   });
   return Promise.all(promises);
-}
+} */
 
 export async function createDocumentWithId(
   path: string,
