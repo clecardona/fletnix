@@ -1,11 +1,9 @@
 //NPM Packages
+import ThumbsItem from "components/Home/ThumbsItem";
 import { FC } from "react";
+import iTitle from "types/iTitle";
 
 //Local Files
-import ThumbsItem from "components/Home/ThumbsItem";
-import iTitle from "types/iTitle";
-import ThumbsMeta from "./ThumbsMeta";
-
 interface IProps {
   data: iTitle[];
   children: string;

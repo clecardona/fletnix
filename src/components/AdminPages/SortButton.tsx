@@ -1,4 +1,11 @@
-export default function SortButton({ children, target, hook }) {
+//NPM Packages
+import { FC } from "react";
+interface IProps {
+  children: string;
+  target: string;
+  hook: any[];
+}
+const SortButton: FC<IProps> = ({ children, target, hook }) => {
   const [selection, setSelection] = hook;
 
   return (
@@ -15,4 +22,5 @@ export default function SortButton({ children, target, hook }) {
       <h4>{children}</h4>
     </button>
   );
-}
+};
+export default SortButton;

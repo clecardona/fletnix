@@ -1,6 +1,13 @@
+//NPM Packages
+import { FC } from "react";
+
+//Local Files
 import SortButton from "components/AdminPages/SortButton";
 
-export default function Sorter({ hook }) {
+interface IProps {
+  hook: any[];
+}
+const Sorter: FC<IProps> = ({ hook }) => {
   return (
     <section className="sorter">
       <SortButton target="create" hook={hook}>
@@ -12,4 +19,5 @@ export default function Sorter({ hook }) {
       </SortButton>
     </section>
   );
-}
+};
+export default Sorter;

@@ -1,5 +1,5 @@
-//NPM PAckages
-import { useState } from "react";
+//NPM Packages
+import { useState, FC } from "react";
 
 //Local imports
 import Sorter from "components/AdminPages/Sorter";
@@ -9,8 +9,9 @@ import { useTitles } from "state/TitlesProvider";
 import { BoxError, Spinner } from "components/shared/FetchItems";
 import useFetch from "hooks/useFetch";
 
-export default function Admin() {
+const Admin: FC = () => {
   // Global state
+  //@ts-ignore
   const { dispatchTitles } = useTitles();
   const titles = useFetch("title_test", dispatchTitles);
 
@@ -31,4 +32,5 @@ export default function Admin() {
       )}
     </>
   );
-}
+};
+export default Admin;

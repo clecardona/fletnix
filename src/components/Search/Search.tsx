@@ -1,5 +1,6 @@
 //NPM Packages
 import { useParams } from "react-router-dom";
+import { FC } from "react";
 
 //Local Files
 import { searchTitle } from "scripts/methods";
@@ -8,12 +9,14 @@ import useFetch from "hooks/useFetch";
 import { BoxError, Spinner } from "components/shared/FetchItems";
 import ThumbsCategory from "../Category/ThumbsCategory";
 
-export default function Search() {
+const Search: FC = () => {
   // Global state
+  //@ts-ignore
   const { dispatchTitles } = useTitles();
   const titles = useFetch("title_test", dispatchTitles);
 
   //Local states
+  //@ts-ignore
   const { query } = useParams();
   const results = searchTitle(titles.data, query);
 
@@ -32,4 +35,5 @@ export default function Search() {
       )}
     </>
   );
-}
+};
+export default Search;

@@ -10,20 +10,15 @@
         display: flex
         justify-content: center
         color: $white
-        padding: .8em .8em 1.5em .8em
+        padding: 1em 1em 1.5em 1em
 
         .details
-            grid-template-columns: max-content 1fr 1fr
+            grid-template-columns: repeat(3,max-content)
             width: 100%
-            justify-content: center
+            justify-content: flex-start
 
 .track-item button:hover
     .thumbs-meta
         opacity: 1
         transition: opacity .3s ease
         transition-delay: .6s
-
-        .details
-            .public
-                width: min-content
-                justify-self: center

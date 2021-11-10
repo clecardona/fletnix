@@ -1,12 +1,18 @@
 //NPM Packages
-import { useState } from "react";
+import { FC, useState } from "react";
 
+//Local Files
 import play from "assets/icns/play.png";
 import info from "assets/icns/info.png";
 import Modal from "components/Modal/Modal";
 import { fixBG, unfixBG } from "scripts/modal";
+import iTitle from "types/iTitle";
 
-export default function Hero({ data }) {
+interface IProps {
+  data: iTitle;
+}
+
+const Hero: FC<IProps> = ({ data }) => {
   //Local states
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -45,4 +51,5 @@ export default function Hero({ data }) {
       <section className="hero"></section>
     </>
   );
-}
+};
+export default Hero;

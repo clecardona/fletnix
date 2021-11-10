@@ -2,30 +2,27 @@
 import { FC } from "react";
 
 const Footer: FC = () => {
+  //Const
+  const links = [
+    "FAQ",
+    "Help Centre",
+    "Terms of Use",
+    "Privacy",
+    "Cookie Preferences",
+    "Corporate Information",
+  ];
+  //Components
+  const Links = links.map((item) => (
+    <li>
+      <p>{item}</p>
+    </li>
+  ));
+
   return (
     <footer id="footer">
       <div className="container">
         <h3>Questions? Call 040-79 06 35</h3>
-        <ul>
-          <li>
-            <p>FAQ</p>
-          </li>
-          <li>
-            <p>Help Centre</p>
-          </li>
-          <li>
-            <p>Terms of Use</p>
-          </li>
-          <li>
-            <p>Privacy</p>
-          </li>
-          <li>
-            <p>Cookie Preferences</p>
-          </li>
-          <li>
-            <p>Corporate Information</p>
-          </li>
-        </ul>
+        <ul>{Links}</ul>
         <span>© 2021 • Clément Cardona</span>
       </div>
     </footer>

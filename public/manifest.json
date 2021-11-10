@@ -1,6 +1,6 @@
 {
-  "short_name": "FootX",
-  "name": "FootX - Learn new Tricks",
+  "short_name": "Fletnix",
+  "name": "Fletnix - Home Video Service",
   "icons": [
     {
       "src": "favicon.ico",
@@ -22,10 +22,10 @@
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",
-  "description": "Learning management system",
+  "description": "Video platform",
   "screenshots": [
     {
-      "src": "/images/screenshot1.png",
+      "src": "/assets/img/fletnix-screenshot.png",
       "type": "image/png",
       "sizes": "540x720"
     }
