@@ -9,9 +9,7 @@ ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
       <TitlesProvider>
-        <TitlesProvider>
-          <App />
-        </TitlesProvider>
+        <App />
       </TitlesProvider>
     </AuthProvider>
   </React.StrictMode>,

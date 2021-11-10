@@ -12,8 +12,8 @@ const Footer: FC = () => {
     "Corporate Information",
   ];
   //Components
-  const Links = links.map((item) => (
-    <li>
+  const Links = links.map((item, index) => (
+    <li key={index}>
       <p>{item}</p>
     </li>
   ));

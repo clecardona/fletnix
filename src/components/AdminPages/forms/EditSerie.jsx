@@ -53,7 +53,7 @@ export default function EditSerie({ state, setForm }) {
       Season {index + 1}
     </option>
   ));
-  //console.log(state.seasons[seasonId].episodes.length);
+
   return (
     <>
       <div className="seasons">

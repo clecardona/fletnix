@@ -38,7 +38,6 @@ export async function signIn(email: string, password: string) {
     account.payload = userCredential.user.uid;
     account.isLogged = true;
   } catch (error) {
-    //console.log(typeof error.code);
     account.payload = getFriendlyError(error.code);
   }
   return account;

@@ -1,30 +1,23 @@
 //@ts-nocheck
 // NPM packages
-import { Firestore, getDoc } from "firebase/firestore/lite";
-import { collection, getDocs } from "firebase/firestore/lite";
 import {
   addDoc,
-  doc,
+  collection,
   deleteDoc,
-  updateDoc,
+  doc,
+  Firestore,
+  getDoc,
+  getDocs,
   setDoc,
+  updateDoc,
 } from "firebase/firestore/lite";
 import { firestoreInstance } from "scripts/firebase";
-import uploadFile from "scripts/storage";
 
 // Create doc with auto id
 export async function createDoc(path: string, data: object) {
   const collectionReference = collection(firestoreInstance, path);
   await addDoc(collectionReference, data);
 }
-
-/* function getUrlNameArray(files) {
-  let promises = files.map(async (item) => {
-    const url = await uploadFile(item);
-    return { name: item.name, url: url };
-  });
-  return Promise.all(promises);
-} */
 
 export async function createDocumentWithId(
   path: string,
@@ -58,16 +51,6 @@ export async function updateDocument(path: string, id: string, data: object) {
   const docReference = doc(firestoreInstance, path, id);
   let updatedCourse = { ...data };
   await updateDoc(docReference, updatedCourse);
-}
-
-export async function updateProfile(path: string, id: string, data: object) {
-  const docReference = doc(firestoreInstance, path, id);
-  let updatedProfile = { ...data };
-  if (typeof data.avatarURL === "object") {
-    const url = await uploadFile(data.avatarURL, `users/avatar`);
-    updatedProfile.avatarURL = url;
-  }
-  await updateDoc(docReference, updatedProfile);
 }
 
 // Delete file
