@@ -5,6 +5,7 @@ import { useState, FC } from "react";
 import Modal from "components/Modal/Modal";
 import { fixBG, unfixBG } from "scripts/modal";
 import iTitle from "types/iTitle";
+import ThumbsMeta from "components/shared/ThumbsMeta";
 
 interface IProps {
   item: iTitle;
@@ -36,6 +37,7 @@ const Thumbs10Item: FC<IProps> = ({ item, imgPath }) => {
           )}
           <img className="thumb" src={item.image_url} alt="" />
         </div>
+        <ThumbsMeta element={item} />
       </button>
       <Modal element={item} isOpen={isModalOpen} onClose={closeModal} />
     </li>

@@ -19,7 +19,7 @@ const Home: FC = () => {
   const titles = useFetch("title_test", dispatchTitles);
 
   //Local states
-  const autoplay = "0"; //Change to "1" here  to have video background in production
+  const autoplay = "0"; //Change to "1" here  to have video background running in production
   const randomIndex = Math.floor(Math.random() * titles.data.length);
   const randomTitle: iTitle = titles.data[randomIndex];
   const series = getCategory(titles.data, "serie");

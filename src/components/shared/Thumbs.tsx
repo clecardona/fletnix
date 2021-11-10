@@ -4,6 +4,7 @@ import { FC } from "react";
 //Local Files
 import ThumbsItem from "components/Home/ThumbsItem";
 import iTitle from "types/iTitle";
+import ThumbsMeta from "./ThumbsMeta";
 
 interface IProps {
   data: iTitle[];
