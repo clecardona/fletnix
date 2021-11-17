@@ -1,12 +1,14 @@
 //@ts-nocheck
 //NPM Packages
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import fletnixBg from "assets/img/fletnixBg.jpeg";
 
 //Local imports
+import fletnixBg from "assets/img/fletnixBg.jpeg";
 import fields from "./assets/fields-login.json";
 import InputField from "components/shared/InputField";
+import Footer from "components/shared/Footer";
+import Header from "components/shared/Header";
 import { signIn } from "scripts/auth";
 import { getDocument } from "scripts/fireStore";
 import { useAuth } from "state/AuthProvider";
@@ -46,16 +48,6 @@ export default function Login() {
     setMessage(code);
   }
 
-  function setStyle() {
-    document.getElementById("footer").style.background = "";
-    document.getElementById("footer").style.borderTop = "";
-    document.getElementById("header").style.background = "";
-  }
-
-  useEffect(() => {
-    setStyle();
-  }, []);
-
   //Components
   const Fields = fields.map((item, index) => (
     <div key={index}>
@@ -70,6 +62,7 @@ export default function Login() {
 
   return (
     <>
+      <Header />
       <main className="page-login">
         <img src={fletnixBg} alt="bg" className="bg" />
 
@@ -104,6 +97,7 @@ export default function Login() {
           </p>
         </div>
       </main>
+      <Footer />
     </>
   );
 }

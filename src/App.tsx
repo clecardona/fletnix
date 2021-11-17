@@ -42,7 +42,6 @@ export default function App() {
       {status === 1 && (
         <BrowserRouter>
           <Switch>{loggedIn ? <Logged /> : <Unlogged />}</Switch>
-          <Footer />
         </BrowserRouter>
       )}
     </div>

@@ -1,6 +1,6 @@
 //@ts-nocheck
 //NPM Packages
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 
 //Local imports
@@ -9,6 +9,8 @@ import InputField from "../shared/InputField";
 import { createAccount } from "scripts/auth";
 import { useAuth } from "state/AuthProvider";
 import { createDocumentWithId } from "scripts/fireStore";
+import Footer from "components/shared/Footer";
+import Header from "components/shared/Header";
 
 export default function Signup() {
   //Local states
@@ -46,16 +48,6 @@ export default function Signup() {
     setMessage(code);
   }
 
-  function setStyle() {
-    document.getElementById("footer").style.background = "#f3f3f3";
-    document.getElementById("footer").style.borderTop = "1px solid #E5E5E5";
-    document.getElementById("header").style.background = "white";
-  }
-
-  useEffect(() => {
-    setStyle();
-  }, []);
-
   //Components
   const Fields = fields.map((item) => (
     <InputField
@@ -67,7 +59,8 @@ export default function Signup() {
   ));
 
   return (
-    <>
+    <div className="signup-container">
+      <Header />
       <Link to="/" className="signin">
         <strong>Sign In</strong>
       </Link>
@@ -83,6 +76,7 @@ export default function Signup() {
           </form>
         </div>
       </main>
-    </>
+      <Footer />
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 //@ts-nocheck
 //NPM Packages
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 //Local imports
@@ -8,6 +8,8 @@ import fields from "./assets/fields-recover.json";
 import InputField from "../shared/InputField";
 import { recover } from "scripts/auth";
 import fletnixBg from "assets/img/fletnixBg.jpeg";
+import Footer from "components/shared/Footer";
+import Header from "components/shared/Header";
 
 export default function Recover() {
   //Local states
@@ -37,16 +39,6 @@ export default function Recover() {
     setMessage(errorMessage);
   }
 
-  function setStyle() {
-    document.getElementById("footer").style.background = "";
-    document.getElementById("footer").style.borderTop = "";
-    document.getElementById("header").style.background = "";
-  }
-
-  useEffect(() => {
-    setStyle();
-  }, []);
-
   //Components
   const Fields = fields.map((item) => (
     <InputField
@@ -57,24 +49,28 @@ export default function Recover() {
     />
   ));
   return (
-    <main className="page-login recover">
-      <img src={fletnixBg} alt="bg" className="bg" />
-      <div className="logo">Fletnix</div>
-      <div className="bloc">
-        <form onSubmit={onSubmit}>
-          {Fields}
-          <p>{message}</p>
-          <button className="btn-signin">
-            <h4>Recover Password</h4>
-          </button>
-        </form>
-        <p className="optional-action">
-          New to Fletnix ?&nbsp;
-          <Link to="/signup">
-            <strong>Sign up now.</strong>
-          </Link>
-        </p>
-      </div>
-    </main>
+    <>
+      <Header />
+      <main className="page-login recover">
+        <img src={fletnixBg} alt="bg" className="bg" />
+        <div className="logo">Fletnix</div>
+        <div className="bloc">
+          <form onSubmit={onSubmit}>
+            {Fields}
+            <p>{message}</p>
+            <button className="btn-signin">
+              <h4>Recover Password</h4>
+            </button>
+          </form>
+          <p className="optional-action">
+            New to Fletnix ?&nbsp;
+            <Link to="/signup">
+              <strong>Sign up now.</strong>
+            </Link>
+          </p>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }

@@ -10,6 +10,7 @@ import HeaderMenu from "components/shared/HeaderMenu";
 import Admin from "components/AdminPages/Admin";
 import Search from "components/Search/Search";
 import Category from "components/Category/Category";
+import Footer from "components/shared/Footer";
 
 export default function Logged() {
   const { user } = useAuth();
@@ -24,6 +25,7 @@ export default function Logged() {
       <Route component={Search} path="/search/:query" />
       <Route component={Category} path="/category/:category" />
       {user.role === "admin" && <Route component={Admin} path="/admin" />}
+      <Footer />
     </>
   );
 }
