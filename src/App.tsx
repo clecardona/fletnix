@@ -9,7 +9,6 @@ import { useAuth } from "state/AuthProvider";
 import { getDocument } from "scripts/fireStore";
 import Logged from "routes/Logged";
 import Unlogged from "routes/Unlogged";
-import Footer from "components/shared/Footer";
 import { BoxError, Spinner } from "components/shared/FetchItems";
 
 export default function App() {
