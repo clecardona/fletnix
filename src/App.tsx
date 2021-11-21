@@ -34,6 +34,18 @@ export default function App() {
 
   useEffect(() => fetchUser("users"), [fetchUser]);
 
+  /**
+   * Code consistency and architecture -10
+   * You are doing 2 styles of fetch in the same project:
+   * The first: uses status = 0, 1, 2 (used here)
+   * The second: has loading, data, error. (used in Home.jsx)
+   *
+   * Both handle calling the same database, yet they have 2 ways of working.
+   * A recruiter will see this and reject your project because feels like you have copied
+   * and pasted from different stackoverflow posts instead of you coding your own code.
+   *
+   * The solution for this is to analyze both approaches and use 1 style, meaning one of the 2 approaches needs to be refactored to behave like the other.
+   */
   return (
     <div className="App">
       {status === 0 && <Spinner />}
