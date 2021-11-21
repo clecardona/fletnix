@@ -38,6 +38,7 @@ export default function App() {
     <div className="App">
       {status === 0 && <Spinner />}
       {status === 2 && <BoxError />}
+      {/* Try to make a component called Browser so all your JSX are 1 line each */}
       {status === 1 && (
         <BrowserRouter>
           <Switch>{loggedIn ? <Logged /> : <Unlogged />}</Switch>

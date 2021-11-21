@@ -27,11 +27,20 @@ const Home: FC = () => {
   const documentaries = getCategory(titles.data, "documentary");
   const top10 = getTop10(titles.data);
 
+  // safeguards
+  if (titles.loading) return <Spinner />;
+  if (titles.error !== null) return <BoxError />;
+
+  // You have <> at the root for something that is clearly a page, you should use <div>, <main>, <section> instead depending on your sctructure.
   return (
     <>
-      {titles.loading === true && <Spinner />}
+      {/* These could be a early return, see example above to make it more organized */}
+      {titles.loading && <Spinner />}
       {titles.error !== null && <BoxError />}
 
+      {/* Clean code -1 */}
+      {/* This double conditionals: You have to stop loading and make sure is not an error is inneficient and prone to erros */}
+      {/* Refactor it to a single status variable that has a value of either "error", "loading", "loaded", etc */}
       {(!titles.loading && titles.error) === null && (
         <>
           <div className="hero-bg">
